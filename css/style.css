@@ -1,0 +1,31 @@
+body {
+    background-image: url("../img/fondo_2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.blackbar{
+    background-color: #0b242d;
+}
+
+.icon img{
+    width: 40px;
+}
+
+.baroption {
+    background-color: #233a46;
+    height: 240px;
+}
+
+.listbar {
+    position: relative;
+    display: block;
+    padding: .5rem 1rem;
+    list-style: none;
+    margin-top: 10px;
+}
+
+.listbar li a{
+    text-decoration: none;
+    color: #fff;
+}
