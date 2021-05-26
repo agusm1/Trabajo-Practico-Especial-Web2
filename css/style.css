@@ -1,31 +1,67 @@
 body {
-    background-image: url("../img/fondo_2.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url("../img/fondo_2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: white;
+}
+.blackbar {
+  background-color: #0b242d;
 }
 
-.blackbar{
-    background-color: #0b242d;
+.icon img {
+  width: 40px;
 }
-
-.icon img{
-    width: 40px;
-}
-
 .baroption {
-    background-color: #233a46;
-    height: 240px;
+  background-color: #233a46;
+  height: 240px;
 }
-
 .listbar {
-    position: relative;
-    display: block;
-    padding: .5rem 1rem;
-    list-style: none;
-    margin-top: 10px;
+  position: relative;
+  display: block;
+  padding: 0.5rem 1rem;
+  list-style: none;
+}
+.listbar li a {
+  text-decoration: none;
+  color: #fff;
+}
+.listbar li a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+.listbar button {
+  color: #fff;
+}
+.listbar button:hover {
+  text-decoration: none;
+  color: #fff;
+}
+.listbar li:first-child {
+  margin-top: 10px;
+}
+.central {
+  background-color: #75b2d2!important;
 }
 
-.listbar li a{
-    text-decoration: none;
-    color: #fff;
+.list_detail{
+    background-color: #75b2d2!important;
+    list-style: none;
+    min-height: 291px;
+}
+.list_detail h4 {
+    text-align: center;
+    padding-top: 13px;
+}
+.list_detail li:nth-child(2){
+    text-align: center;
+}
+.list_detail li:nth-child(4){
+    margin-top: 17px;
+    margin-bottom: 19px;
+    text-align: center;
 }

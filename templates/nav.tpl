@@ -10,20 +10,6 @@
                 <li class="nav-item">
                     <a class="nav-link active icon" href="home"><img src="{$base_url}/img/icono_home.png"></a>
                 </li>
-                <li class="nav-item">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Genero
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            {foreach from=$genres item=genre}
-                                <a class="dropdown-item" href="gamesforgenero/{$genre->id_genero}">{$genre->nombre}</a>
-                            {/foreach}
-                        </div>
-                    </div>
-                </li>
-
             </ul>
             {if $username != ''}
                 <div class="navbar-nav ml-auto">

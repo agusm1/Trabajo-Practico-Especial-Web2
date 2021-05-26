@@ -1,8 +1,9 @@
 {include file="header.tpl"}
 <div class="container">
-    <div class="row align-items-center">
+    <div class="row align-items-start">
         <h1>{$title}</h1>
-        <div class="col">
+        {include file="baroption.tpl"}
+        <div class="col-md-9">
             <ul class="list-group">
                 {foreach from=$gamefge item=gfge}
                     <li class="list-group-item">
@@ -16,7 +17,4 @@
         </div>
     </div>
 </div>
-
-
-
 {include file="footer.tpl"}

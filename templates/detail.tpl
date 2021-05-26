@@ -1,16 +1,19 @@
 {include file="header.tpl"}
 <div class="container">
-    <div class="row align-items-center">
+    <div class="row">
         <h1>{$title}</h1>
-        <div class="col">
-            <ul>
+        {include file="baroption.tpl"}
+        <div class="col-md-9">
+            <ul class="list_detail">
                 {foreach from=$game item=g }
-                    <li>{$g->titulo}</li>
+                    <h4>{$g->titulo}</h4>
                     <li>{$g->anio}</li>
                     <li>{$g->sinopsis}</li>
-                    <a class="btn btn-primary" href="formEdit/{$g->id_game}">Editar</a>
-                {/foreach}
-                <a class="btn btn-primary" href="home">Volver</a>
+                    <li>
+                        <a class="btn btn-primary" href="formEdit/{$g->id_game}">Editar</a>
+                    {/foreach}
+                    <a class="btn btn-primary" href="home">Volver</a>
+                </li>
             </ul>
         </div>
     </div>

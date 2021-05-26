@@ -6,7 +6,7 @@
         <div class="col-md-9">
             <ul class="list-group">
                 {foreach from=$games item=$game}
-                    <li class="list-group-item">
+                    <li class="list-group-item central">
                         <h4>{$game->titulo} </h4>
                         <span>{$game->anio} </span> <br>
                         <a class="btn btn-primary" href="detail/{$game->id_game}">Ver</a>
