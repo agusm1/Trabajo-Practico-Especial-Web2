@@ -1,6 +1,6 @@
 {include file="header.tpl"}
 <div class="container">
-    <div class="row align-items-start">
+    <div class="row align-items-start title">
         <h1>{$title}</h1>
         {include file="baroption.tpl"}
         <div class="col-md-9">

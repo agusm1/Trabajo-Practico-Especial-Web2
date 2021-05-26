@@ -1,12 +1,12 @@
 {include file="header.tpl"}
 <div class="container">
-    <div class="row align-items-start">
+    <div class="row align-items-start title">
         <h1>{$title}</h1>
         {include file="baroption.tpl"}
         <div class="col-md-9">
             <ul class="list-group">
                 {foreach from=$gamefge item=gfge}
-                    <li class="list-group-item">
+                    <li class="list-group-item central">
                         <h4>{$gfge->titulo} </h4>
                         <span>{$gfge->anio} </span> <br>
                         <span>{$gfge->nombre} </span> <br>

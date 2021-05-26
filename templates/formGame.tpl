@@ -1,23 +1,23 @@
 {include 'templates/header.tpl'}
 
 <div class="container">
-    <div class="row align-items-start">
+    <div class="row align-items-start title">
         <h1>{$title}</h1>
         {include file="baroption.tpl"}
-        <div class="col-md-9">
+        <div class="col-md-9 central">
             <form action="createGame" method="POST">
                 <div class="form-group">
                     <label>Ingrese el nombre del juego</label>
-                    <input name="nombre" type="text" class="form-control" placeholder="Ingrese el nombre del genero">
+                    <input name="nombre" type="text" class="form-control" placeholder="Ingrese el nombre del juego">
                 </div>
                 <div class="form-group">
                     <label>Ingrese el año del juego</label>
-                    <input name="anio" type="text" class="form-control" placeholder="Ingrese el año del genero">
+                    <input name="anio" type="text" class="form-control" placeholder="Ingrese el año del juego">
                 </div>
                 <div class="form-group">
                     <label>Ingrese la sinopsis del juego</label>
                     <input name="sinopsis" type="text" class="form-control"
-                        placeholder="Ingrese la sinopsis del genero">
+                        placeholder="Ingrese la sinopsis del juego">
                 </div>
                 <div class="form-group">
                     <select name="genero">
@@ -26,7 +26,7 @@
                         {/foreach}
                     </select>
                 </div>
-                <input type="submit" class="btn btn-primary">
+                <button type="button" class="btn btn-primary">Enviar </button>
             </form>
         </div>
     </div>

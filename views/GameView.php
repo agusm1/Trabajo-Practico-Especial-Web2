@@ -13,14 +13,15 @@ class GameView extends View{
     $this->getSmarty()->assign('username', $username);
   }
 
-  public function showformGenre(){
-    $this->getSmarty()->assign('title','Insertar genero');
+  public function showformGenre($genres){
+    $this->getSmarty()->assign('title','Crear genero');
+    $this->getSmarty()->assign('genres', $genres);
     
     $this->getSmarty()->display('templates/formGenre.tpl'); // muestro el template
   }
 
   public function showformGame($genres){
-    $this->getSmarty()->assign('title','Insertar juego');
+    $this->getSmarty()->assign('title','Crear juego');
     $this->getSmarty()->assign('genres', $genres);
     $this->getSmarty()->display('templates/formGame.tpl'); // muestro el template
   }
@@ -71,7 +72,7 @@ class GameView extends View{
     $this->getSmarty()->assign('title', 'Error');
     $this->getSmarty()->assign('msg', $msg);
     $this->getSmarty()->display('templates/error.tpl');  
-    }
+  }
 
   public function showEditGenre($genres, $game,  $id_genre){
     $this->getSmarty()->assign('title', 'Editar genero');

@@ -32,7 +32,8 @@ class InvitedController {
 
     public function showformGenre(){
         AuthHelper::checkLoggedIn();
-        $this->view->showformGenre();
+        $genres = $this->modelgenre->getAll();
+        $this->view->showformGenre($genres);
     }
 
     public function showformGame(){
