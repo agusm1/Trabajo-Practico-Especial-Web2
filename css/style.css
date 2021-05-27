@@ -4,10 +4,12 @@ body {
   background-size: cover;
 }
 footer {
-  position: absolute;
   bottom: 0;
+  top: 93%;
+  clear: both;
   width: 100%;
   color: white;
+  margin-top: 20px;
 }
 .blackbar {
   background-color: #0b242d;
@@ -45,47 +47,50 @@ footer {
   margin-top: 10px;
 }
 .central {
-  background-color: #2e7fa9!important;
+  background-color: #2e7fa9 !important;
 }
 
-.list_detail{
-    background-color: #2e7fa9!important;
-    list-style: none;
-    
+.list_detail {
+  background-color: #2e7fa9 !important;
+  list-style: none;
 }
 .list_detail h4 {
-    text-align: center;
-    padding-top: 13px;
+  text-align: center;
+  padding-top: 13px;
 }
-.list_detail li:nth-child(2){
-    text-align: center;
+.list_detail li:nth-child(2) {
+  text-align: center;
 }
-.list_detail li:nth-child(4){
-    margin-top: 17px;
-    margin-bottom: 19px;
-    text-align: center;
+.list_detail li:nth-child(4) {
+  margin-top: 17px;
+  margin-bottom: 19px;
+  text-align: center;
 }
 .conteinerList_detail {
-    min-height: 291px;
+  min-height: 291px;
 }
-.central span{
-    text-align: center;
+.central span {
+  text-align: center;
 }
-.title h1:first-child{
+.title h1:first-child {
+  color: #fff;
+}
+.form-group label {
+  padding-bottom: 5px;
+  padding-top: 10px;
+}
+.form-group select {
+  margin: 9px 0px 7px;
+  padding: 3px;
+}
+.central button:last-child {
+  margin-bottom: 12px;
+  margin-top: 10px;
+}
+.central form {
+  padding-right: 30px;
+}
+.central h1 {
     color: #fff;
-}
-.form-group label{
-    padding-bottom: 5px;
-    padding-top: 10px;
-}
-.form-group select{
-    margin: 9px 0px 7px;
-    padding: 3px;
-}
-.central button:last-child{
-    margin-bottom: 12px;
-    margin-top: 10px;
-}
-.central form{
-    padding-right: 30px;
+    text-align: center;
 }

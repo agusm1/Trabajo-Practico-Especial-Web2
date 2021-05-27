@@ -38,7 +38,7 @@ class GameView extends View{
     $this->getSmarty()->assign('title','Home');
     $this->getSmarty()->assign('games', $games);
     $this->getSmarty()->assign('genres', $genres);
-    $this->getSmarty()->display('templates/gameLista.tpl'); // muestro el template
+    $this->getSmarty()->display('templates/gameList.tpl'); // muestro el template
   }
 
   public function showGaforGe($gamesfges, $genres){

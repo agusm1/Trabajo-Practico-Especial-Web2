@@ -1,7 +1,7 @@
 {include 'templates/header.tpl'}
-
-<div class="container">
-    <form action="verify" method="POST" class="col-md-4 offset-md-4 mt-4">
+<div class="container central col-md-4 offset-md-4 mt-4">
+    <h1>{$title}</h1>
+    <form action="verify" method="POST">
         <div class="form-group">
             <label>Ingrese su Usuario</label>
             <input name="username" type="text" class="form-control" placeholder="Ingrese su usuario">
@@ -16,7 +16,7 @@
                 {$error}
             </div>
         {/if}
-        <input type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary">Entrar</button>
     </form>
 </div>
 

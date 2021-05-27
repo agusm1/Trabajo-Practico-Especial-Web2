@@ -18,7 +18,7 @@ class GenreModel extends Model {
             // 1. Establece la conexion con la base de datos y trae todos los elementos de la tabla game
             $query = $this->getDb()->prepare(" SELECT * FROM genero WHERE id_genero = ?");
             $query-> execute([$id_genre]); 
-            return $query->fetch(PDO::FETCH_OBJ);
+            return $query->fetchAll(PDO::FETCH_OBJ);
     
         }
 

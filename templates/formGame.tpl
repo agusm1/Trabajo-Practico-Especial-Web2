@@ -26,7 +26,7 @@
                         {/foreach}
                     </select>
                 </div>
-                <button type="button" class="btn btn-primary">Enviar </button>
+                <button type="submit" class="btn btn-primary">Enviar </button>
             </form>
         </div>
     </div>

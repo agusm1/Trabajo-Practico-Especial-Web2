@@ -9,7 +9,7 @@
                     <label>Ingrese nombre del genero</label>
                     <input name="nombre" type="text" class="form-control" placeholder="Ingrese nombre del genero">
                 </div>
-                <button type="button" class="btn btn-primary">Enviar</button>
+                <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
         </div>
     </div>

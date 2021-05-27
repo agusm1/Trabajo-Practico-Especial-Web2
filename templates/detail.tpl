@@ -1,7 +1,7 @@
 {include file="header.tpl"}
 <div class="container ">
     <div class="row align-items-start title">
-        <h1 style="color: #fff;">{$title}</h1>
+        <h1>{$title}</h1>
         {include file="baroption.tpl"}
         <div class="col-md-9">
             <ul class="list-group">
@@ -13,7 +13,9 @@
                         <span>{$g->sinopsis}</span>
                         <br>
                         <span>
-                            <a class="btn btn-primary" href="formEdit/{$g->id_game}">Editar</a>
+                            {if $username != ''}
+                                <a class="btn btn-primary" href="formEdit/{$g->id_game}">Editar</a>
+                            {/if}
                         {/foreach}
                         <a class="btn btn-primary" href="home">Volver</a>
                     </span>
