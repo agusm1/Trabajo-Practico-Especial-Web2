@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-05-2021 a las 05:11:47
+-- Tiempo de generación: 28-05-2021 a las 11:30:07
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.4
 
@@ -67,8 +67,7 @@ CREATE TABLE `genero` (
 INSERT INTO `genero` (`id_genero`, `nombre`) VALUES
 (1, 'Accion'),
 (2, 'Aventura'),
-(3, 'Rol'),
-(4, 'Carreras');
+(3, 'Rol');
 
 -- --------------------------------------------------------
 
