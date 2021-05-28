@@ -1,3 +1,4 @@
+</div>
 <footer class="blackbar text-center text-lg-start">
     <!-- Copyright -->
     <div class="text-center p-3 text-light">

@@ -100,7 +100,7 @@ class InvitedController {
     public function deleteGenre($id_genre){
         AuthHelper::checkLoggedIn();
         $this->modelgenre->delete($id_genre);
-        header("Location: " . BASE_URL . 'home'); 
+        header("Location: " . BASE_URL . 'generos'); 
     }
     
     public function showeditGame($id_game){

@@ -18,3 +18,4 @@
 
 <body>
     {include file="nav.tpl"}
+    <div class="contenido">

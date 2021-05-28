@@ -4,12 +4,12 @@ body {
   background-size: cover;
 }
 footer {
+  position: fixed;
   bottom: 0;
   top: 93%;
   clear: both;
   width: 100%;
   color: white;
-  margin-top: 20px;
 }
 .blackbar {
   background-color: #0b242d;
@@ -91,6 +91,9 @@ footer {
   padding-right: 30px;
 }
 .central h1 {
-    color: #fff;
-    text-align: center;
+  color: #fff;
+  text-align: center;
+}
+.contenido {
+    margin-bottom: 70px;
 }
