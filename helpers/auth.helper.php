@@ -12,7 +12,7 @@ class AuthHelper {
             session_start();
     }
 
-
+    //Guarda el username del usuario que esta logueado
     public static function getLoggedUserName() {
         self::start();
         if (isset($_SESSION['USERNAME'])){
@@ -23,6 +23,7 @@ class AuthHelper {
         }
     }
 
+    // Chequea si el usuario esta logueado
     public static function checkLoggedIn(){
         self::start();
         if(!isset($_SESSION['ID_USER'])){

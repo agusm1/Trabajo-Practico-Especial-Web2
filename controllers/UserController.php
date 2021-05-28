@@ -18,16 +18,27 @@ class UserController {
     }
 
     public function showRegistrar() {
+        /**
+         * Llama a la funcion que muestra el formulario para ingresar datos de un nuevo usuario
+         */
         $this->userview->showRegistrar();
     }    
 
-    public function registrar() {
+    public function registrar() { 
+        /** 
+         * Recibe los datos del formulario de registro de usuario y los envia al modelo, los guarda en la BBDD y manda al home a la pagina
+        */
         $user = $_POST['username'];
         $pass = $_POST['password'];
         $this->usermodel->add($user, $pass);
-        header("Location: " . BASE_URL . 'home');
+        header("Location: " . BASE_URL . 'login');
     }
+
     public function verify() {
+        /**
+         * Recibe los datos del formulario login y verifica si no estan vacios, si existe y si concuerdan con la BBDD
+         * si esto se cumple redirije al home de la pagina 
+         */
         if(!empty($_POST['username']) && !empty($_POST['password'])){
             $user = $_POST['username'];
             $pass = $_POST['password'];

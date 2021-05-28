@@ -13,7 +13,6 @@ class Model {
     }
 
     public function setConection() {
-        $db = new PDO('mysql:host=localhost;dbname=db_games;charset=utf8', 'root', '');
         $host = 'localhost';
         $userName = 'root';
         $password = '';

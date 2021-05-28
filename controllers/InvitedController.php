@@ -17,6 +17,9 @@ class InvitedController {
     }
 
     public function showHome(){
+        /**
+         * Crea dos variables que contienen todos los juegos y todos los generos y los manda a la vista home
+         */
         $games = $this->modelgames->getAll();
         $genres = $this->modelgenre->getAll();
         $this->view->home($games, $genres);
@@ -24,6 +27,9 @@ class InvitedController {
     }
 
     public function showGenre(){
+        /**
+         * Crea dos variables que contienen todos los juegos y todos los generos y los manda a la vista de los generos
+         */
         $games = $this->modelgames->getAll();
         $genres = $this->modelgenre->getAll();
 
@@ -31,18 +37,33 @@ class InvitedController {
     }
 
     public function showformGenre(){
+        /**
+         * 1. Chequea que halla un usuario logueado
+         * 2. Trae todos los generos
+         * 3. llama a la funcion que muestra el formulario para insertar un genero
+         */
         AuthHelper::checkLoggedIn();
         $genres = $this->modelgenre->getAll();
         $this->view->showformGenre($genres);
     }
 
     public function showformGame(){
+         /**
+         * 1. Chequea que halla un usuario logueado
+         * 2. Trae todos los generos y los asigna a una variable
+         * 3. llama a la funcion que muestra el formulario para insertar un genero
+         */
         AuthHelper::checkLoggedIn();
         $genres = $this->modelgenre->getAll();
         $this->view->showformGame($genres);
     }
 
     public function createGenre(){
+         /**
+         * 1. Chequea que halla un usuario logueado
+         * 2. Recibe el nombre que mando el usuario y pregunta a la base de datos si ese nombre ya existe
+         * 3. Si el genero existe marca un error, si no existe lo registra en la tabla genero de la BBDD
+         */
         AuthHelper::checkLoggedIn();
         $namegenre = $_POST['nombre'];
         $haygenero = $this->modelgenre->getName($namegenre);
@@ -57,6 +78,11 @@ class InvitedController {
     }
 
     public function createGame(){
+        /**
+         * 1. Chequea que halla un usuario logueado
+         * 2. Recibe los datos del juego que mando el usuario y pregunta si no estan vacios y los asigna a una variable
+         * 3. Si alguno de los campos esta vacio marca error, si todos estan completos lo registra en la tabla game de la BBDD
+         */
         AuthHelper::checkLoggedIn();
         $titulo = $_POST['nombre'];
         $anio = $_POST['anio'];
@@ -74,6 +100,11 @@ class InvitedController {
     }
  
     public function showGameForGenre($id_genero){
+        /**
+         * 1. Trae todos los juegos asociados al id_genero que selecciono el usuario y los asigna a una variable
+         * 2. Trae todos generos y los asigna a una variable
+         * 3. Envia por parametros las dos variables anteriormente creadas
+         */
         $gamesfge = $this->modelgames->getGamesForGenre($id_genero);
         $genres = $this->modelgenre->getAll();
         $this->view->showGaforGe($gamesfge, $genres);

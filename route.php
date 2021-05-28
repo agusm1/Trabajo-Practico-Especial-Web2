@@ -73,6 +73,9 @@ $UserController = new UserController();
         case 'logout': // Cierra la sesion
             $UserController->logout();
             break;
+        
+        default:
+        $InvitedController->showError();
 
     }
 
