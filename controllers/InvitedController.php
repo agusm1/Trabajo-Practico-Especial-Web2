@@ -143,4 +143,8 @@ class InvitedController {
         }
 
     }
+
+    public function showError(){
+        $this->view->showError('La pagina solicitada no existe');
+    }
 }

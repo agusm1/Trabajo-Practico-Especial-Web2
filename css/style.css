@@ -97,3 +97,7 @@ footer {
 .contenido {
     margin-bottom: 70px;
 }
+.central h2 {
+  padding: 97px;
+  text-align: center;  
+}
