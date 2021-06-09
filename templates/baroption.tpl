@@ -19,7 +19,7 @@
             </button>
             <div class="dropdown-menu">
                 {foreach from=$genres item=genre}
-                    <a class="dropdown-item" href="gamesforgenero/{$genre->id_genero}">{$genre->nombre}</a>
+                    <a class="dropdown-item" href="gamesforgenero/{$genre->id_genre}">{$genre->name}</a>
                 {/foreach}
             </div>
         </div>

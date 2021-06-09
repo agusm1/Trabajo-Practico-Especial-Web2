@@ -22,22 +22,36 @@ class GameModel extends Model{
 
     }
 
-    public function getGamesForGenre($id_genero) {
+    public function getGamesForGenre($id_genre) {
         /**
          * Trae todos los elementos de la tabla game que esten relacionas con el id del genero seleccionado por el usuario 
         */ 
-        $query = $this->getDb()->prepare("SELECT game.id_game, game.titulo, game.sinopsis, game.anio, genero.nombre FROM `game` JOIN `genero` ON game.id_genero= genero.id_genero WHERE genero.id_genero = ?");
-        $query-> execute([$id_genero]); 
+        $query = $this->getDb()->prepare("SELECT game.id_game, game.title, game.synopsis, game.year, genero.name FROM `game` JOIN `genero` ON game.id_genre= genero.id_genre WHERE genero.id_genre = ?");
+        $query-> execute([$id_genre]); 
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function create($titulo, $anio, $sinopsis, $id_genero){
+    public function create($title, $year, $synopsis, $id_genre){
         /**
          * Inserta en la base de datos game los datos del juego que el usuario halla enviado
          */
-        $query = $this->getDb()->prepare('INSERT INTO game  (`titulo`, `anio`, `sinopsis`, `id_genero`) VALUES (?, ?, ?, ?)');
-        $result= $query->execute([$titulo, $anio, $sinopsis, $id_genero]);
-        return $result;
+        $query = $this->getDb()->prepare('INSERT INTO game  (`title`, `year`, `synopsis`, `id_genre`) VALUES (?, ?, ?, ?)');
+        $result= $query->execute([$title, $year, $synopsis, $id_genre]);
+        if($result){
+            $id_game = $this->getDb()->lastInsertId();
+            $query_img = $this->getDb()->prepare('INSERT INTO image (path, id_game) values(?,?)');
+            
+            foreach($_FILES["imagesToUpload"]["tmp_name"] as $key => $tmp_name)
+            {
+                $destino_final = "images/".uniqid().".png";
+                move_uploaded_file($tmp_name, $destino_final);
+                $r = $query_img->execute([intval($id_game), $destino_final]);
+                var_dump($r, $id_game);
+                die;
+            }
+        }
+
+
     }
 
     public function delete($id_game){
@@ -49,12 +63,12 @@ class GameModel extends Model{
 
     }
 
-    public function update($id_game, $titulo, $anio, $sinopsis, $id_genero) {
+    public function update($id_game, $title, $year, $synopsis, $id_genre) {
         /**
          * Recibe los datos que edito el usuario y los inserta en el juego correspondiente por su id_game
          */
-        $query = $this->getDb()->prepare('UPDATE game SET titulo = ?, anio = ?, sinopsis = ?, id_genero = ? WHERE id_game = ?');
-        $result = $query->execute([$titulo, $anio, $sinopsis, $id_genero, $id_game]);
+        $query = $this->getDb()->prepare('UPDATE game SET title = ?, year = ?, synopsis = ?, id_genero = ? WHERE id_game = ?');
+        $result = $query->execute([$title, $year, $synopsis, $id_genre, $id_game]);
         return $result;
     }
 }

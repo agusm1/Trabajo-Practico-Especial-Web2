@@ -5,10 +5,10 @@
         {include file="baroption.tpl"}
         <div class="col-md-9 central">
             {foreach from=$genre item=$g}
-                <form action="updateGenre/{$g->id_genero}" method="POST">
+                <form action="updateGenre/{$g->id_genre}" method="POST">
                     <div class="form-group">
                         <label>Ingrese nombre del genero</label>
-                        <input name="nombre" type="text" class="form-control" placeholder="{$g->nombre}">
+                        <input name="nombre" type="text" class="form-control" placeholder="{$g->name}">
                     </div>
                     <input type="submit" class="btn btn-primary">
                 </form>

@@ -7,9 +7,9 @@
             <ul class="list-group">
                 {foreach from=$gamefge item=gfge}
                     <li class="list-group-item central">
-                        <h4>{$gfge->titulo} </h4>
-                        <span>{$gfge->anio} </span> <br>
-                        <span>{$gfge->nombre} </span> <br>
+                        <h4>{$gfge->title} </h4>
+                        <span>{$gfge->year} </span> <br>
+                        <span>{$gfge->name} </span> <br>
                         <a class="btn btn-primary" href="detail/{$gfge->id_game}">Ver</a>
                     </li>
                 {/foreach}
