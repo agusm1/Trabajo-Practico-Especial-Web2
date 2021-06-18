@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-06-2021 a las 05:43:15
+-- Tiempo de generación: 18-06-2021 a las 16:02:06
 -- Versión del servidor: 10.1.31-MariaDB
--- Versión de PHP: 7.2.3
+-- Versión de PHP: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,18 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_games`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `commentary`
+--
+
+CREATE TABLE `commentary` (
+  `id_commentary` int(11) NOT NULL,
+  `commentary` varchar(350) NOT NULL,
+  `id_game` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -115,6 +127,13 @@ INSERT INTO `user` (`id`, `usuario`, `contraseña`) VALUES
 --
 
 --
+-- Indices de la tabla `commentary`
+--
+ALTER TABLE `commentary`
+  ADD PRIMARY KEY (`id_commentary`),
+  ADD KEY `fk_commentary_game` (`id_game`);
+
+--
 -- Indices de la tabla `game`
 --
 ALTER TABLE `game`
@@ -146,6 +165,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `commentary`
+--
+ALTER TABLE `commentary`
+  MODIFY `id_commentary` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `game`
 --
 ALTER TABLE `game`
@@ -172,6 +197,13 @@ ALTER TABLE `user`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `commentary`
+--
+ALTER TABLE `commentary`
+  ADD CONSTRAINT `fk_commentary_game` FOREIGN KEY (`id_game`) REFERENCES `game` (`id_game`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_commentary_user` FOREIGN KEY (`id_commentary`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `game`
