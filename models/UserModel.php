@@ -2,17 +2,34 @@
 
 require_once('Model.php');
 
-class UserModel extends Model { 
+class UserModel extends Model
+{
 
-    public function getUserByUsername($username){
-        $query = $this->getDb()->prepare('SELECT * FROM `user` WHERE usuario = ?');
+    public function getAll()
+    {
+        $query = $this->getDb()->prepare('SELECT * FROM `user`');
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function getUserByUsername($username)
+    {
+        $query = $this->getDb()->prepare('SELECT * FROM `user` WHERE user = ?');
         $query->execute(array(($username)));
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
-    public function add($user, $pass) {
+    public function add($user, $pass, $admin)
+    {
         $passEnc = password_hash($pass, PASSWORD_DEFAULT);
-        $query = $this->getDb()->prepare('INSERT INTO `user` (usuario, contraseña) VALUES (?, ?)');
-        $query->execute([$user, $passEnc]);
+        $query = $this->getDb()->prepare('INSERT INTO `user` (user, password, admin) VALUES (?, ?, ?)');
+        $query->execute([$user, $passEnc, $admin]);
+    }
+
+    public function modify($id, $admin)
+    {
+        $query = $this->getDb()->prepare('UPDATE `user` SET admin = ? WHERE id = ?');
+        $result = $query->execute([$id, $admin]);
+        return $result;
     }
 }

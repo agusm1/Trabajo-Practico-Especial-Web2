@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-06-2021 a las 16:02:06
+-- Tiempo de generación: 18-06-2021 a las 23:48:25
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.4
 
@@ -111,16 +111,24 @@ CREATE TABLE `image` (
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `usuario` varchar(150) NOT NULL,
-  `contraseña` varchar(240) NOT NULL
+  `user` varchar(150) NOT NULL,
+  `password` varchar(240) NOT NULL,
+  `admin` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`id`, `usuario`, `contraseña`) VALUES
-(5, 'admin', '$2y$10$gihck7uYf/VDJRoW/59vUOcv.EHrZGPp4fdj/xonJoYRRjmkL2VAS');
+INSERT INTO `user` (`id`, `user`, `password`, `admin`) VALUES
+(5, 'admin', '$2y$10$gihck7uYf/VDJRoW/59vUOcv.EHrZGPp4fdj/xonJoYRRjmkL2VAS', 1),
+(6, 'Usuario_1', '$2y$10$7iYTNpYgkIrg8s1IfiEiU.ImDqhWNNkrepiZ3kxYC6OxhWz2a98GG', 0),
+(7, 'Usuario_2', '$2y$10$NGiG33eXe8fkV0j/Px0xzeLVCYT.C.GGPXAbKovBlgO8kO/p.vCgy', 1),
+(8, 'Usuario_3', '$2y$10$cHZZJ77hH.TEw7Uc14oEz.plOF9TnuSAWIxGbcr8SUis5Z3GKsv3G', 0),
+(9, 'Usuario_3', '$2y$10$PoNqXyF8uT2DmcZ2AOPk8.NT5Ey0J7TC6WdH7JVQ/VY.JIqWp3pd.', 0),
+(10, 'Usuario4', '$2y$10$plcbS3kwQFw1ZpC9XDos0ulhq2LZaZXgx.6JXZnkUXnBKsbY6n3F6', 0),
+(11, 'Usuario5', '$2y$10$J.317MGuNsFnjwa8h23oI.n2640uSaNdfYt4gAifko.pWeoRQ6zd.', 0),
+(12, 'Usuario6', '$2y$10$KQbjvTTU.YiqcFeRsEZTCe6VfgsK7mq6Nrq/Smgaz/pNWhpZ1wdGG', 0);
 
 --
 -- Índices para tablas volcadas
@@ -192,7 +200,7 @@ ALTER TABLE `image`
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Restricciones para tablas volcadas

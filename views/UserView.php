@@ -18,7 +18,7 @@ class UserView extends View {
     }
 
     public function showRegistrar($error=null) {
-        $this->getSmarty()->assign('title', "Regristrarse");
+        $this->getSmarty()->assign('title', "Registrarse");
         $this->getSmarty()->assign('error', $error);        
         $this->getSmarty()->assign('home', BASE_URL.'home');
         $this->getSmarty()->display('templates/registrar.tpl');

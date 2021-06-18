@@ -22,7 +22,14 @@ class AuthHelper {
             return false;
         }
     }
+    public static function checkAdmin(){
+        self::start();
+        if (empty($_SESSION['ADMIN'])){
+            header('Location: ' . BASE_URL . "errorAdmin");//Revisar la redireccion de esto
+            die;
+        }
 
+    }
     // Chequea si el usuario esta logueado
     public static function checkLoggedIn(){
         self::start();
@@ -38,7 +45,8 @@ class AuthHelper {
         self::start();
         $_SESSION['IS_LOGGED'] = true;
         $_SESSION['ID_USER'] = $user->id;
-        $_SESSION['USERNAME'] = $user->usuario;
+        $_SESSION['USERNAME'] = $user->user;
+        $_SESSION['ADMIN'] = $user->admin;
     }
 
     //Destruye la session

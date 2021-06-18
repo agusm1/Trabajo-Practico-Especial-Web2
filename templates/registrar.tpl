@@ -14,7 +14,11 @@
                     <label>Contraseña</label>
                     <input name="password" type="password" class="form-control" placeholder="Enter password">
                 </div>
-
+                {if $error}
+                    <div class="alert alert-danger" role="alert">
+                        {$error}
+                    </div>
+                {/if}
                 <input type="submit" class="btn btn-primary">
             </form>
         </div>

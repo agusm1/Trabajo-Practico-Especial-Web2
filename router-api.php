@@ -1,14 +1,14 @@
 <?php
 require_once 'libs/Router.php';
-require_once 'api/task-api.controller.php';
+require_once 'api/InvitedApiController.php';
 
 // crea el router
 $router = new Router();
 
 // define la tabla de ruteo
-$router->addRoute('tareas', 'GET', 'TaskApiController', 'getTasks');
-$router->addRoute('tarea/:ID', 'GET', 'TaskApiController', 'getTask');
-$router->addRoute('tarea', 'POST', 'TaskApiController', 'addTask');
+$router->addRoute('api/tareas', 'GET', 'InvitedApiController', 'getTasks');
+$router->addRoute('api/tarea/:ID', 'GET', 'InvitedApiController', 'getTask');
+$router->addRoute('tarea', 'POST', 'InvitedApiController', 'addTask');
 
 
 // rutea
