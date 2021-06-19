@@ -32,4 +32,9 @@ class UserModel extends Model
         $result = $query->execute([$admin, $id]);
         return $result;
     }
+    public function delete($id)
+    {
+        $query = $this->getDb()->prepare('DELETE FROM user WHERE id = ?');
+        $query->execute([$id]);
+    }
 }

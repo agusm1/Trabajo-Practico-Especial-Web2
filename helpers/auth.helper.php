@@ -25,7 +25,7 @@ class AuthHelper {
     public static function checkAdmin(){
         self::start();
         if (empty($_SESSION['ADMIN'])){
-            header('Location: ' . BASE_URL . "errorAdmin");//Revisar la redireccion de esto
+            header('Location: ' . BASE_URL . "errorAdmin");
             die;
         }
 

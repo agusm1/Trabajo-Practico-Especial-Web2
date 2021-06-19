@@ -9,6 +9,7 @@ class UserController
     private $usermodel;
     private $userview;
     private $adminview;
+
     public function __construct()
     {
         $this->usermodel = new UserModel();
@@ -42,17 +43,21 @@ class UserController
         /** 
          * Recibe los datos del formulario de registro de usuario y los envia al modelo, los guarda en la BBDD y manda al home a la pagina
          */
-        $user = $_POST['username'];
-        $pass = $_POST['password'];
-        $admin = 0;
-        $hayuser = $this->usermodel->getUserByUsername($user);
-        if ($hayuser) {
-            $this->userview->showRegistrar("Ya existe un usuario con ese nombre");
+        if($_POST['username'] != '' && $_POST['password'] != ''){
+            $user = $_POST['username'];
+            $pass = $_POST['password'];
+            $admin = 0;
+            $hayuser = $this->usermodel->getUserByUsername($user);
+            if ($hayuser) {
+                $this->userview->showRegistrar("Ya existe un usuario con ese nombre");
+            } else {
+                $this->usermodel->add($user, $pass, $admin);
+                $userDb = $this->usermodel->getUserByUsername($user);
+                AuthHelper::login($userDb);
+                header("Location: " . BASE_URL . 'home');
+            }
         } else {
-            $this->usermodel->add($user, $pass, $admin);
-            $userDb = $this->usermodel->getUserByUsername($user);
-            AuthHelper::login($userDb);
-            header("Location: " . BASE_URL . 'home');
+            $this->userview->showRegistrar("Debe ingresar los datos obligatorios");
         }
     }
 
@@ -83,7 +88,7 @@ class UserController
          * Segun el numero que recibe en la variable $admin añadira o quitara los permisos de administrador
          */
         
-        if($admin != 1){
+        if(empty($admin)){
             $this->usermodel->modify($id, $admin);
         }else{
             $this->usermodel->modify($id, $admin);
@@ -100,5 +105,11 @@ class UserController
     public function errorAdmin(){
 
         $this->adminview->error("No tiene permisos para acceder al apartado de administrador");
+    }
+
+    public function deleteUser($id){
+
+        $this->usermodel->delete($id);
+        header("Location: " . BASE_URL . 'admin');
     }
 }

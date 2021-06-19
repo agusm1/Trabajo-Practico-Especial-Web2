@@ -82,6 +82,9 @@ switch ($parametros[0]) {
     case 'errorAdmin': // Cierra la sesion
         $UserController->errorAdmin();
         break;
+    case 'deleteUser': // Cierra la sesion
+        $UserController->deleteUser($parametros[1]);
+        break;        
     default:
         $InvitedController->showError();
 }
