@@ -22,14 +22,14 @@ class UserModel extends Model
     public function add($user, $pass, $admin)
     {
         $passEnc = password_hash($pass, PASSWORD_DEFAULT);
-        $query = $this->getDb()->prepare('INSERT INTO `user` (user, password, admin) VALUES (?, ?, ?)');
+        $query = $this->getDb()->prepare('INSERT INTO user (user, password, admin) VALUES (?, ?, ?)');
         $query->execute([$user, $passEnc, $admin]);
     }
 
     public function modify($id, $admin)
     {
-        $query = $this->getDb()->prepare('UPDATE `user` SET admin = ? WHERE id = ?');
-        $result = $query->execute([$id, $admin]);
+        $query = $this->getDb()->prepare('UPDATE user SET admin = ? WHERE id = ?');
+        $result = $query->execute([$admin, $id]);
         return $result;
     }
 }

@@ -82,7 +82,8 @@ class UserController
         /**
          * Segun el numero que recibe en la variable $admin añadira o quitara los permisos de administrador
          */
-        if(empty($admin)){
+        
+        if($admin != 1){
             $this->usermodel->modify($id, $admin);
         }else{
             $this->usermodel->modify($id, $admin);
