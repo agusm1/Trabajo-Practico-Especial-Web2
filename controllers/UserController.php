@@ -112,4 +112,6 @@ class UserController
         $this->usermodel->delete($id);
         header("Location: " . BASE_URL . 'admin');
     }
+
+
 }

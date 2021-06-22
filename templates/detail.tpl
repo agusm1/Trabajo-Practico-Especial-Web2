@@ -12,20 +12,17 @@
                         <br>
                         <span>{$g->synopsis}</span>
                         <br>
-                        {if $g->image !=''}
-                            <img style="height: 150px; width: 200px" src="{$g->image}" />
-                        {/if}
-                        <span>
+                        <span id="{$id_game}">
                             {if $username != ''}
                                 <a class="btn btn-primary" href="formEdit/{$g->id_game}">Editar</a>
                             {/if}
+                            <a class="btn btn-primary" href="home">Volver</a>
                         {/foreach}
-                        <a class="btn btn-primary" href="home">Volver</a>
                     </span>
                 </li>
             </ul>
+            {include file="vue/comments.tpl"}
         </div>
     </div>
 </div>
-
 {include file="footer.tpl"}

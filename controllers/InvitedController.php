@@ -24,6 +24,7 @@ class InvitedController
          * Crea dos variables que contienen todos los juegos y todos los generos y los manda a la vista home
          */
         $games = $this->modelgames->getAll();
+        $images = $this->modelgames->getImages();
         $genres = $this->modelgenre->getAll();
         $this->view->home($games, $genres);
     }
@@ -124,7 +125,7 @@ class InvitedController
         $genres = $this->modelgenre->getAll();
 
         if (!empty($game) && !empty($genres)) {
-            $this->view->viewGame($game, $genres);
+            $this->view->viewGame($game, $genres, $id_game);
         } else {
             $this->view->showError("La pagina que usted solicito no se encuentra");
         }

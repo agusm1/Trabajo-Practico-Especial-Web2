@@ -6,9 +6,11 @@ require_once 'api/InvitedApiController.php';
 $router = new Router();
 
 // define la tabla de ruteo
-$router->addRoute('api/tareas', 'GET', 'InvitedApiController', 'getTasks');
-$router->addRoute('api/tarea/:ID', 'GET', 'InvitedApiController', 'getTask');
-$router->addRoute('tarea', 'POST', 'InvitedApiController', 'addTask');
+$router->addRoute('game/:ID', 'GET', 'InvitedApiController', 'getCommentsForGame');
+$router->addRoute('game/new/:ID', 'POST', 'InvitedApiController', 'insertCommentary');
+
+
+//$router->addRoute('tarea', 'POST', 'InvitedApiController', 'addTask');
 
 
 // rutea

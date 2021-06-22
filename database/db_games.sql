@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-06-2021 a las 05:06:59
+-- Tiempo de generación: 23-06-2021 a las 01:37:30
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.4
 
@@ -31,8 +31,18 @@ SET time_zone = "+00:00";
 CREATE TABLE `commentary` (
   `id_commentary` int(11) NOT NULL,
   `commentary` varchar(350) NOT NULL,
-  `id_game` int(11) NOT NULL
+  `vote` int(1) NOT NULL,
+  `id_match` int(11) NOT NULL,
+  `name_user` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `commentary`
+--
+
+INSERT INTO `commentary` (`id_commentary`, `commentary`, `vote`, `id_match`, `name_user`) VALUES
+(1, 'Me gusto mucho el juego muy recomendable.', 5, 1, '5'),
+(2, 'Comentario 2', 2, 1, '5');
 
 -- --------------------------------------------------------
 
@@ -61,15 +71,7 @@ INSERT INTO `game` (`id_game`, `title`, `year`, `synopsis`, `id_genre`) VALUES
 (7, 'Uncharted: El tesoro de Drake', 2007, 'El juego se abre con Nathan Drake (Nolan North, voz inglesa) quien recupera el ataúd del explorador y ancestro de Nathan (tal como él mismo dice), Sir Francis Drake desde el fondo del océano, utilizando las coordenadas inscritas en un anillo en posesión de Nathan. El esfuerzo se paga a través de la empresa de la periodista Elena Fisher (Emily Rose), que está ahí para registrar los acontecimientos para un posible documental exitoso. El ataúd está vacío, sin cadáver, sólo contiene un diario escrito por Sir Francis Drake, que apunta a la ubicación de El Dorado, la legendaria ciudad de oro donde Sir Francis Drake fue para encontrar el tesoro, demostrando su falsa muerte como Nathan creía. ', 1),
 (8, 'The Elder Scrolls V: Skyrim', 2011, 'La agitación se extiende por el Imperio de Tamriel. El soberano de Skyrim ha sido asesinado. A medida que surgen aspirantes al trono, se van formando alianzas. En mitad de este conflicto, resurge un antiguo mal mucho más peligroso: los dragones, olvidados hace tiempo entre oscuros pasajes de los antiguos pergaminos, han regresado a Tamriel. El futuro de Skyrim, incluso el del propio Imperio, pende de un hilo, mientras aguardan la llegada vaticinada del Sangre de dragón, un héroe dotado del poder de La Voz, el único que puede hacer frente a los dragones.', 3),
 (14, 'Super Smash Bros: Brawl', 2008, 'Tras elegir entre una gran variedad de personajes, dos a cuatro jugadores lucharán en diferentes y variados escenarios mientras tratan de sacar a sus oponentes fuera del escenario. ... Incluye un modo de un jugador más extenso que sus predecesores, conocido como El emisario subespacial.', 1),
-(20, '1324', 3132, '133435', 1),
-(21, '1324', 3132, '133435', 1),
-(22, 'dgssfz', 0, 'gddj', 1),
-(23, 'dgssfz', 0, 'gddj', 1),
-(24, 'dgssfz', 0, 'gddj', 1),
-(25, 'dgssfz', 0, 'gddj', 1),
-(26, 'dgssfz', 0, 'gddj', 1),
-(27, 'dgssfz', 0, 'gddj', 1),
-(28, 'dgssfz', 0, 'gddj', 1);
+(29, 'Dark Souls', 2011, 'El juego tiene lugar en los últimos días de la Edad del Fuego, la cual comenzó tras la derrota de los Dragones de Piedra que anteriormente reinaban el mundo. Durante esta época el mundo era un lugar oscuro y lúgubre habitado solamente por una raza inmortal de dragones cuya capacidad de prolongar su vida eternamente provenía de sus escamas pétreas. En esta época aparentemente no existía aún ninguna llama, por lo que el mundo era un lugar completamente oscuro, amorfo y casi desierto.', 1);
 
 -- --------------------------------------------------------
 
@@ -126,9 +128,7 @@ INSERT INTO `user` (`id`, `user`, `password`, `admin`) VALUES
 (7, 'Usuario_2', '$2y$10$NGiG33eXe8fkV0j/Px0xzeLVCYT.C.GGPXAbKovBlgO8kO/p.vCgy', 0),
 (8, 'Usuario_3', '$2y$10$cHZZJ77hH.TEw7Uc14oEz.plOF9TnuSAWIxGbcr8SUis5Z3GKsv3G', 0),
 (9, 'Usuario_3', '$2y$10$PoNqXyF8uT2DmcZ2AOPk8.NT5Ey0J7TC6WdH7JVQ/VY.JIqWp3pd.', 0),
-(10, 'Usuario4', '$2y$10$plcbS3kwQFw1ZpC9XDos0ulhq2LZaZXgx.6JXZnkUXnBKsbY6n3F6', 0),
-(11, 'Usuario5', '$2y$10$J.317MGuNsFnjwa8h23oI.n2640uSaNdfYt4gAifko.pWeoRQ6zd.', 0),
-(12, 'Usuario6', '$2y$10$KQbjvTTU.YiqcFeRsEZTCe6VfgsK7mq6Nrq/Smgaz/pNWhpZ1wdGG', 0);
+(10, 'Usuario4', '$2y$10$plcbS3kwQFw1ZpC9XDos0ulhq2LZaZXgx.6JXZnkUXnBKsbY6n3F6', 0);
 
 --
 -- Índices para tablas volcadas
@@ -139,7 +139,8 @@ INSERT INTO `user` (`id`, `user`, `password`, `admin`) VALUES
 --
 ALTER TABLE `commentary`
   ADD PRIMARY KEY (`id_commentary`),
-  ADD KEY `fk_commentary_game` (`id_game`);
+  ADD KEY `fk_commentary_game` (`id_match`),
+  ADD KEY `fk_commentary_user` (`name_user`);
 
 --
 -- Indices de la tabla `game`
@@ -176,13 +177,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `commentary`
 --
 ALTER TABLE `commentary`
-  MODIFY `id_commentary` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_commentary` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `game`
 --
 ALTER TABLE `game`
-  MODIFY `id_game` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_game` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `genero`
@@ -194,7 +195,7 @@ ALTER TABLE `genero`
 -- AUTO_INCREMENT de la tabla `image`
 --
 ALTER TABLE `image`
-  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
@@ -210,8 +211,7 @@ ALTER TABLE `user`
 -- Filtros para la tabla `commentary`
 --
 ALTER TABLE `commentary`
-  ADD CONSTRAINT `fk_commentary_game` FOREIGN KEY (`id_game`) REFERENCES `game` (`id_game`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_commentary_user` FOREIGN KEY (`id_commentary`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_commentary_game` FOREIGN KEY (`id_match`) REFERENCES `game` (`id_game`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `game`

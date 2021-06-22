@@ -8,8 +8,14 @@ class GameModel extends Model{
     public function getAll(){
 
         // 1. Establece la conexion con la base de datos y trae todos los elementos de la tabla game
-        $query = $this->getDb()->prepare(" SELECT * FROM game");
+        $query = $this->getDb()->prepare("SELECT * FROM game");
         $query-> execute(); 
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function getImages(){
+        $query = $this->getDb()->prepare("SELECT image.path FROM `image` JOIN `game` ON image.id_game = game.id_game");
+        $query-> execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
@@ -43,7 +49,7 @@ class GameModel extends Model{
             
             foreach($_FILES["imagesToUpload"]["tmp_name"] as $key => $tmp_name)
             {
-                $destino_final = "images/".uniqid().".png";
+                $destino_final = "images/".uniqid().".jpg";
                 move_uploaded_file($tmp_name, $destino_final);
                 $r = $query_img->execute([intval($id_game), $destino_final]);
                 var_dump($r, $id_game);
