@@ -46,8 +46,9 @@ class UserModel extends Model
         return $comments;
     }
 
-    public function insertCommentary($commentary, $vote, $id_game, $name_user){
-        $query = $this->getDb()->prepare('INSERT INTO commentary (commentary, vote, id_match ,name_user) VALUES (?, ?, ?, ?)');
-        $query->execute([$commentary, $vote, $id_game, $name_user]);
+    public function insertCommentary($commentary, $vote, $name_user, $id_game){
+        $query = $this->getDb()->prepare('INSERT INTO commentary (commentary, vote, name_user, id_match) VALUES (?, ?, ?, ?)');
+        $create = $query->execute([$commentary, $vote, $name_user, $id_game]);
+        return $create;
     }
 }

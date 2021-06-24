@@ -26,7 +26,7 @@ class InvitedController
         $games = $this->modelgames->getAll();
         $images = $this->modelgames->getImages();
         $genres = $this->modelgenre->getAll();
-        $this->view->home($games, $genres);
+        $this->view->home($games, $genres, $images);
     }
 
     public function showGenre()

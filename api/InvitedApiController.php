@@ -34,14 +34,13 @@ class InvitedApiController
     }
     public function insertCommentary($params = [])
     {
-        echo 'Entra a la funcion insertar comentario';
-        $id_game = $params[':ID'];
+        $comment = $this->getData();
 
-        $commentary = $_POST['commentary'];
-        $vote = $_POST['vote'];
-        $name_user = $_SESSION['USERNAME'];
-        if ($commentary != '' && $vote != ''){
-            $this->usermodel->insertCommentary($commentary, $vote, $id_game, $name_user);
+        $inserted = $this->usermodel->insertCommentary($comment->commentary, $comment->vote, $comment->username, $comment->id_game);
+        if ($inserted){
+            $this->view->response($comment, 200);
+        } else {
+            $this->view->response("Error", 500);
         }
 
     }

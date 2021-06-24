@@ -21,7 +21,22 @@
                     </span>
                 </li>
             </ul>
-            {include file="vue/comments.tpl"}
+            <div style="background-color: #ffff;">
+                <form method="POST" id="newCommentary">
+                    <input type="text" name="commentary" id="commentary" placeholder="Ingrese un comentario">
+                    <select name="vote" id="vote">
+                        <option value='1'> 1</option>
+                        <option value='2'> 2</option>
+                        <option value='3'> 3</option>
+                        <option value='4'> 4</option>
+                        <option value='5'> 5</option>
+                    </select>
+                <input type="text" id="username" value="{$username}">
+                    <button type="submit" class="btn btn-primary">Enviar </button>
+                </form>
+                
+            </div>
+            {include file="vue/comments.vue"}
         </div>
     </div>
 </div>

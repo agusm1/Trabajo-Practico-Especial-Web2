@@ -9,6 +9,9 @@
                     <li class="list-group-item central">
                         <h4>{$game->title} </h4>
                         <span>{$game->year} </span> <br>
+                        {if $images}
+                            <img src="{$images[0]->path}">
+                        {/if}
                         <a class="btn btn-primary" href="detail/{$game->id_game}">Ver</a>
                         {if $username != ''}
                             <a class="btn btn-primary" href="deleteGame/{$game->id_game}">ELIMINAR</a>

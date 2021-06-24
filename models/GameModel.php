@@ -51,9 +51,7 @@ class GameModel extends Model{
             {
                 $destino_final = "images/".uniqid().".jpg";
                 move_uploaded_file($tmp_name, $destino_final);
-                $r = $query_img->execute([intval($id_game), $destino_final]);
-                var_dump($r, $id_game);
-                die;
+                $r = $query_img->execute([$destino_final, intval($id_game)]);
             }
         }
 

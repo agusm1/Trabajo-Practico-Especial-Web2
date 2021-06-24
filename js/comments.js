@@ -12,12 +12,14 @@ window.addEventListener('load', function () {
             getComments: function () {
                 getComments();
             },
-            loadComment: function (comment){
+            loadComment: function (comment) {
                 this.comments.push(comment);
             },
         },
     });
     app.getComments();
+    form = document.getElementById('newCommentary');
+    form.addEventListener('submit', addComment);
 
     function getComments() {
         let urlParts = window.location.href.split('/');
@@ -32,4 +34,24 @@ window.addEventListener('load', function () {
             })
             .catch(error => console.log(error));
     }
-})
+});
+
+function addComment() {
+    console.log('Llega a addComment');
+    let urlParts = window.location.href.split('/');
+    let id_game = urlParts[urlParts.length - 1];
+    let commentary = document.getElementById('commentary').value;
+    let vote = document.getElementById('vote').value;
+    let username = document.getElementById('username').value;
+    let comment = {
+        "commentary": commentary,
+        "vote": vote,
+        "username": username,
+        "id_game": id_game,        
+    }
+    fetch("api/new/" + id_game, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(comment) 
+    }).then(response =>console.log(response))    
+}

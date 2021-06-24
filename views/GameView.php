@@ -33,11 +33,12 @@ class GameView extends View{
     $this->getSmarty()->display('templates/genresList.tpl'); // muestro el template
   }
 
-  public function home($games, $genres){
+  public function home($games, $genres, $images){
 
     $this->getSmarty()->assign('title','Home');
     $this->getSmarty()->assign('games', $games);
     $this->getSmarty()->assign('genres', $genres);
+    $this->getSmarty()->assign('images', $images);
     $this->getSmarty()->display('templates/gameList.tpl'); // muestro el template
   }
 
