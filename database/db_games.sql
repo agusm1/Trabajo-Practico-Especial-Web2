@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-06-2021 a las 17:02:56
+-- Tiempo de generación: 30-06-2021 a las 03:18:59
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.4
 
@@ -42,10 +42,10 @@ CREATE TABLE `commentary` (
 
 INSERT INTO `commentary` (`id_commentary`, `commentary`, `vote`, `id_match`, `name_user`) VALUES
 (1, 'Me gusto mucho el juego muy recomendable.', 5, 1, '5'),
-(2, 'Comentario 2', 2, 1, '5'),
 (4, 'Muy buen juego', 5, 1, 'admin'),
-(5, 'Malisimo', 1, 1, 'admin'),
-(6, 'Malisimo x2', 1, 1, 'admin');
+(7, 'Muy buen juego', 5, 3, 'admin'),
+(10, 'Me gusto mucho este juegazo', 5, 3, 'admin'),
+(15, 'No me gusta', 1, 1, 'admin');
 
 -- --------------------------------------------------------
 
@@ -115,7 +115,25 @@ CREATE TABLE `image` (
 INSERT INTO `image` (`id_image`, `path`, `id_game`) VALUES
 (13, 'images/60d4957f70d76.jpg', 33),
 (14, 'images/60d4957f85d69.jpg', 33),
-(15, 'images/60d4957f9a975.jpg', 33);
+(15, 'images/60d4957f9a975.jpg', 33),
+(19, 'images/60d805b728417.jpg', 3),
+(20, 'images/60d805b741a5b.jpg', 3),
+(21, 'images/60d805b759930.jpg', 3),
+(22, 'images/60d805efed8f9.jpg', 3),
+(23, 'images/60d805f0032fb.jpg', 3),
+(24, 'images/60d805f00b7cc.jpg', 3),
+(25, 'images/60d806fc66e17.jpg', 3),
+(26, 'images/60d806fc71610.jpg', 3),
+(27, 'images/60d806fc7dd4b.jpg', 3),
+(28, 'images/60d8071f16a2a.jpg', 3),
+(29, 'images/60d8071f25874.jpg', 3),
+(30, 'images/60d8071f2f89e.jpg', 3),
+(31, 'images/60d8b0c69a5ce.jpg', 3),
+(32, 'images/60d8b0c6b6edb.jpg', 3),
+(33, 'images/60d8b0c6c39fe.jpg', 3),
+(34, 'images/60da96f9ab214.jpg', 1),
+(35, 'images/60da96fa48424.jpg', 1),
+(36, 'images/60da96fa639a9.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -189,7 +207,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `commentary`
 --
 ALTER TABLE `commentary`
-  MODIFY `id_commentary` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_commentary` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `game`
@@ -207,7 +225,7 @@ ALTER TABLE `genero`
 -- AUTO_INCREMENT de la tabla `image`
 --
 ALTER TABLE `image`
-  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `user`

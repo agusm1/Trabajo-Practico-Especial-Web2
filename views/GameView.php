@@ -33,12 +33,11 @@ class GameView extends View{
     $this->getSmarty()->display('templates/genresList.tpl'); // muestro el template
   }
 
-  public function home($games, $genres, $images){
+  public function home($games, $genres){
 
     $this->getSmarty()->assign('title','Home');
     $this->getSmarty()->assign('games', $games);
     $this->getSmarty()->assign('genres', $genres);
-    $this->getSmarty()->assign('images', $images);
     $this->getSmarty()->display('templates/gameList.tpl'); // muestro el template
   }
 
@@ -51,11 +50,13 @@ class GameView extends View{
     $this->getSmarty()->display('templates/listForGenre.tpl');
   }
 
-  public function viewGame($game, $genres, $id_game){
+  public function viewGame($game, $genres, $id_game, $images){
     $this->getSmarty()->assign('title', 'Detalle');
     $this->getSmarty()->assign('game', $game);
     $this->getSmarty()->assign('genres', $genres);
     $this->getSmarty()->assign('id_game', $id_game);
+    $this->getSmarty()->assign('images', $images);
+
     $this->getSmarty()->display('templates/detail.tpl');
 
   }
@@ -82,5 +83,12 @@ class GameView extends View{
     $this->getSmarty()->assign('id_genre', $id_genre);
     $this->getSmarty()->display('templates/genreEdit.tpl');
 
+  }
+
+  public function formImage($games, $genres){
+    $this->getSmarty()->assign('title', 'Subir imagenes');
+    $this->getSmarty()->assign('games', $games);
+    $this->getSmarty()->assign('genres', $genres);
+    $this->getSmarty()->display('templates/formImages.tpl');
   }
 }

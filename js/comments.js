@@ -1,43 +1,38 @@
-
-window.addEventListener('load', function () {
-    //debugger
-    let app = new Vue({
-        el: "#Vue-comments",
-        data: {
-            subtitle: "Esto es un subtitulo random",//esto funciona
-            comments: []
+let app = new Vue({
+    el: "#Vue-comments",
+    data: {
+        subtitle: "Esto es un subtitulo random", //esto funciona
+        comments: []
+    },
+    methods: {
+        getComments: function() {
+            getComments();
         },
-        methods:
-        {
-            getComments: function () {
-                getComments();
-            },
-            loadComment: function (comment) {
-                this.comments.push(comment);
-            },
+        loadComment: function(comment) {
+            this.comments.push(comment);
         },
-    });
-    app.getComments();
-    form = document.getElementById('newCommentary');
-    form.addEventListener('submit', addComment);
-
-    function getComments() {
-        let urlParts = window.location.href.split('/');
-        let id_game = urlParts[urlParts.length - 1];
-        fetch("api/game/" + id_game)
-            .then(response => { return response.json() })
-            .then(comments => {
-                //console.log(comments[0]);
-                comments.forEach(comment => {
-                    app.loadComment(comment)
-                });
-            })
-            .catch(error => console.log(error));
-    }
+    },
 });
+app.getComments();
+form = document.getElementById('newCommentary');
+form.addEventListener('submit', addComment);
 
-function addComment() {
-    console.log('Llega a addComment');
+function getComments() {
+    let urlParts = window.location.href.split('/');
+    let id_game = urlParts[urlParts.length - 1];
+    fetch("api/game/" + id_game)
+        .then(response => { return response.json() })
+        .then(comments => {
+            //console.log(comments[0]);
+            comments.forEach(comment => {
+                app.loadComment(comment)
+            });
+        })
+        .catch(error => console.log(error));
+}
+
+function addComment(evt) {
+    evt.preventDefault();
     let urlParts = window.location.href.split('/');
     let id_game = urlParts[urlParts.length - 1];
     let commentary = document.getElementById('commentary').value;
@@ -47,11 +42,13 @@ function addComment() {
         "commentary": commentary,
         "vote": vote,
         "username": username,
-        "id_game": id_game,        
+        "id_game": id_game,
     }
-    fetch("api/new/" + id_game, {
+
+    fetch("api/new", {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(comment) 
-    }).then(response =>console.log(response))    
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(comment)
+    }).then(response => getComments())
+
 }

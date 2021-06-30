@@ -24,9 +24,8 @@ class InvitedController
          * Crea dos variables que contienen todos los juegos y todos los generos y los manda a la vista home
          */
         $games = $this->modelgames->getAll();
-        $images = $this->modelgames->getImages();
         $genres = $this->modelgenre->getAll();
-        $this->view->home($games, $genres, $images);
+        $this->view->home($games, $genres);
     }
 
     public function showGenre()
@@ -123,9 +122,9 @@ class InvitedController
 
         $game = $this->modelgames->get($id_game);
         $genres = $this->modelgenre->getAll();
-
+        $images = $this->modelgames->getImages($id_game);
         if (!empty($game) && !empty($genres)) {
-            $this->view->viewGame($game, $genres, $id_game);
+            $this->view->viewGame($game, $genres, $id_game, $images);
         } else {
             $this->view->showError("La pagina que usted solicito no se encuentra");
         }
@@ -186,6 +185,32 @@ class InvitedController
         } else {
             $this->view->showError("Debe completar todos los campos obligatorios");
         }
+    }
+
+    public function showformImage()
+    {
+
+        $games = $this->modelgames->getAll();
+        $genres = $this->modelgenre->getAll();
+        $this->view->formImage($games, $genres);
+    }
+
+    public function uploadImage()
+    {
+        $id_game = $_POST['game'];
+        $images = $this->modelgames->uploadImages($id_game);
+        if ($images != false)
+        {
+            header("Location: " . BASE_URL . 'home'); 
+        } else {
+            $this->view->showError("Error 500 Server Internal Error");
+        }
+    }
+
+    public function deleteImg($id_img){
+
+        
+
     }
 
     public function showError()

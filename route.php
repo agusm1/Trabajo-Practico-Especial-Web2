@@ -67,6 +67,15 @@ switch ($parametros[0]) {
     case 'detail': // Muestra los detalles de un juego
         $InvitedController->showDetail($parametros[1]); //parametros[1] => id_game
         break;
+    case 'formImage':
+        $InvitedController->showformImage();
+        break;
+    case 'uploadImage':
+        $InvitedController->uploadImage();
+        break;
+    case 'eliminarImg':
+        $InvitedController->deleteImg($parametros[1]);
+        break;
     case 'verify': // Verifica que exista el usuario 
         $UserController->verify();
         break;
@@ -84,7 +93,7 @@ switch ($parametros[0]) {
         break;
     case 'deleteUser': // Cierra la sesion
         $UserController->deleteUser($parametros[1]);
-        break;        
+        break;
     default:
         $InvitedController->showError();
 }

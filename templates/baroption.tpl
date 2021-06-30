@@ -11,6 +11,9 @@
             <li>
                 <a class="btn" href="formgenre"><i class="fa fa-plus" aria-hidden="true"></i> Crear genero</a>
             </li>
+            <li>
+                <a class="btn" href="formImage"><i class="fa fa-plus" aria-hidden="true"></i> Subir imagen</a>
+            </li>
         {/if}
         <div class="btn-group dropright ">
             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"

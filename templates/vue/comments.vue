@@ -9,4 +9,3 @@
         </ul>
     </section>
 {/literal}
-<script src="{$base_url}/js/comments.js"></script>

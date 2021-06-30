@@ -7,7 +7,7 @@ $router = new Router();
 
 // define la tabla de ruteo
 $router->addRoute('game/:ID', 'GET', 'InvitedApiController', 'getCommentsForGame');
-$router->addRoute('new/:ID', 'POST', 'InvitedApiController', 'insertCommentary');
+$router->addRoute('new', 'POST', 'InvitedApiController', 'insertCommentary');
 
 
 //$router->addRoute('tarea', 'POST', 'InvitedApiController', 'addTask');

@@ -35,13 +35,12 @@ class InvitedApiController
     public function insertCommentary($params = [])
     {
         $comment = $this->getData();
-
-        $inserted = $this->usermodel->insertCommentary($comment->commentary, $comment->vote, $comment->username, $comment->id_game);
-        if ($inserted){
+        $inserted = $this->usermodel->insertCommentary($comment->commentary, 
+        $comment->vote, $comment->username, $comment->id_game);
+        if ($inserted) {
             $this->view->response($comment, 200);
         } else {
             $this->view->response("Error", 500);
         }
-
     }
 }
