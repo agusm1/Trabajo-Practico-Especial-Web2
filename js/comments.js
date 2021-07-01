@@ -7,9 +7,9 @@ let app = new Vue({
         getComments: function() {
             getComments();
         },
-        loadComment: function(comment) {
-            this.comments.push(comment);
-        },
+        deleteComment: function(id_commentary) {
+            deleteComment(id_commentary);
+        }
     },
 });
 app.getComments();
@@ -22,9 +22,7 @@ function getComments() {
     fetch("api/game/" + id_game)
         .then(response => { return response.json() })
         .then(comments => {
-            comments.forEach(comment => {
-                app.loadComment(comment)
-            });
+            app.comments = comments;
         })
         .catch(error => console.log(error));
 }
@@ -48,6 +46,18 @@ function addComment(evt) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(comment)
     }).then(response => getComments())
+}
+
+function deleteComment(id_commentary) {
+
+    fetch('api/comment/' + id_commentary, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+        }).then(response => { return response.json() })
+        .then(comment => {
+            app.getComments();
+        })
+        .catch(error => { console.log(error) })
 }
 
 let img = new Vue({
@@ -90,5 +100,4 @@ function deleteImage(id_image) {
             img.getImages();
         })
         .catch(error => { console.log(error) })
-
 }

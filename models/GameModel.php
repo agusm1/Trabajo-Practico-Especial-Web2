@@ -13,12 +13,6 @@ class GameModel extends Model{
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function getImages($id_game){
-        $query = $this->getDb()->prepare("SELECT image.path FROM `image` JOIN `game` ON image.id_match = game.id_game WHERE game.id_game = ?");
-        $query-> execute([$id_game]);
-        return $query->fetchAll(PDO::FETCH_OBJ);
-    }
-
     public function get($id_game){
 
         // 1. Establece la conexion con la base de datos y trae todos los elementos de la tabla game
@@ -54,17 +48,6 @@ class GameModel extends Model{
                 $r = $query_img->execute([$destino_final, intval($id_game)]);
             }
         }
-    }
-
-    public function uploadImages($id_game){
-        $query = $this->getDb()->prepare('INSERT INTO image (path, id_match) values (?,?)');
-        foreach($_FILES["imagesToUpload"]["tmp_name"] as $key => $tmp_name)
-            {
-                $destino_final = "images/".uniqid().".jpg";
-                move_uploaded_file($tmp_name, $destino_final);
-                $r = $query->execute([$destino_final, intval($id_game)]);
-            }
-        return $r;
     }
 
     public function delete($id_game){

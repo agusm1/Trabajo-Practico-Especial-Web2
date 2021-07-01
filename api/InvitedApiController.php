@@ -1,6 +1,8 @@
 <?php
 require_once 'models/GameModel.php';
 require_once 'models/UserModel.php';
+require_once 'models/ImageModel.php';
+require_once 'models/CommentModel.php';
 require_once 'api/APIView.php';
 
 
@@ -11,11 +13,14 @@ class InvitedApiController
     private $usermodel;
     private $view;
     private $data;
+    private $imagemodel;
 
     public function __construct()
     {
         $this->model = new GameModel();
         $this->usermodel = new UserModel();
+        $this->imagemodel = new ImageModel();
+        $this->commentmodel = new CommentModel();
         $this->view = new APIView();
         $this->data = file_get_contents("php://input");
     }
@@ -29,13 +34,13 @@ class InvitedApiController
     {
 
         $id_game = $params[':ID'];
-        $comments = $this->usermodel->getAllCommentary($id_game);
+        $comments = $this->commentmodel->getAll($id_game);
         $this->view->response($comments, 200);
     }
     public function insertCommentary($params = [])
     {
         $comment = $this->getData();
-        $inserted = $this->usermodel->insertCommentary(
+        $inserted = $this->commentmodel->insert(
             $comment->commentary,
             $comment->vote,
             $comment->username,
@@ -47,18 +52,31 @@ class InvitedApiController
             $this->view->response("Error", 500);
         }
     }
+
+    public function deleteComment($params = []){
+        
+        $id_commentary = $params[':ID'];
+        $comment =$this->commentmodel->delete($id_commentary);
+        if ($comment) {
+            $this->view->response($comment, 200);
+        } else {
+            $this->view->response("Error", 500);
+        }
+    }
+
     public function getImages($params = [])
     {
 
         $id_game = $params[':ID'];
-        $images = $this->usermodel->getImages($id_game);
+        $images = $this->imagemodel->getImages($id_game);
         $this->view->response($images, 200);
     }
+
     public function deleteImage($params = [])
     {
 
         $id_image = $params[':ID'];
-        $image = $this->usermodel->deleteImg($id_image);
+        $image = $this->imagemodel->delete($id_image);
         if ($image) {
             $this->view->response($image, 200);
         } else {

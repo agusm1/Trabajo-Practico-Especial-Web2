@@ -1,6 +1,7 @@
 <?php
 require_once 'models/GameModel.php';
 require_once 'models/GenreModel.php';
+require_once 'models/ImageModel.php';
 require_once 'views/GameView.php';
 
 class InvitedController
@@ -10,12 +11,14 @@ class InvitedController
     private $modelgenre;
     private $view;
     private $user;
+    private $imagemodel;
 
     public function __construct()
     {
         $this->view = new GameView;
         $this->modelgames = new GameModel;
         $this->modelgenre = new GenreModel;
+        $this->imagemodel = new ImageModel();
     }
 
     public function showHome()
@@ -122,7 +125,7 @@ class InvitedController
 
         $game = $this->modelgames->get($id_game);
         $genres = $this->modelgenre->getAll();
-        $images = $this->modelgames->getImages($id_game);
+        $images = $this->imagemodel->getImages($id_game);
         if (!empty($game) && !empty($genres)) {
             $this->view->viewGame($game, $genres, $id_game, $images);
         } else {
@@ -198,19 +201,13 @@ class InvitedController
     public function uploadImage()
     {
         $id_game = $_POST['game'];
-        $images = $this->modelgames->uploadImages($id_game);
+        $images = $this->imagemodel->upload($id_game);
         if ($images != false)
         {
             header("Location: " . BASE_URL . 'home'); 
         } else {
             $this->view->showError("Error 500 Server Internal Error");
         }
-    }
-
-    public function deleteImg($id_img){
-
-        
-
     }
 
     public function showError()

@@ -37,31 +37,5 @@ class UserModel extends Model
         $query = $this->getDb()->prepare('DELETE FROM user WHERE id = ?');
         $query->execute([$id]);
     }
-
-    public function getAllCommentary($id_game)
-    {
-        $query = $this->getDb()->prepare('SELECT commentary.id_commentary, commentary.commentary, commentary.vote, commentary.id_match, commentary.name_user, game.id_game FROM `commentary` JOIN `game` ON commentary.id_match= game.id_game WHERE game.id_game = ?');
-        $query->execute([$id_game]);
-        $comments = $query->fetchAll(PDO::FETCH_OBJ);
-        return $comments;
-    }
-
-    public function insertCommentary($commentary, $vote, $name_user, $id_game){
-        $query = $this->getDb()->prepare('INSERT INTO commentary (commentary, vote, name_user, id_match) VALUES (?, ?, ?, ?)');
-        $create = $query->execute([$commentary, $vote, $name_user, $id_game]);
-        return $create;
-    }
-
-    public function getImages($id_game){
-        $query = $this->getDb()->prepare("SELECT image.id_image, image.path FROM `image` JOIN `game` ON image.id_match = game.id_game WHERE game.id_game = ?");
-        $query-> execute([$id_game]);
-        return $query->fetchAll(PDO::FETCH_OBJ);
-    }
-
-    public function deleteImg($id_image){
-        $query = $this->getDb()->prepare('DELETE FROM image WHERE id_image = ?');
-        $query->execute([$id_image]);
-        return $query;
-    }
 }
 

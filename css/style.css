@@ -1,131 +1,131 @@
 body {
-  background-image: url("../img/fondo_2.png");
-  background-repeat: repeat;
-  background-size: cover;
+    background-image: url("../img/fondo_2.png");
+    background-repeat: repeat;
+    background-size: cover;
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
-  top: 93%;
-  clear: both;
-  width: 100%;
-  color: white;
+    position: fixed;
+    bottom: 0;
+    top: 93%;
+    clear: both;
+    width: 100%;
+    color: white;
 }
 
 .blackbar {
-  background-color: #0b242d;
+    background-color: #0b242d;
 }
 
 .icon img {
-  width: 40px;
+    width: 40px;
 }
 
 .baroption {
-  background-color: #233a46;
-  height: 240px;
+    background-color: #233a46;
+    height: 240px;
 }
 
 .listbar {
-  position: relative;
-  display: block;
-  padding: 0.5rem 1rem;
-  list-style: none;
+    position: relative;
+    display: block;
+    padding: 0.5rem 1rem;
+    list-style: none;
 }
 
 .listbar li a {
-  text-decoration: none;
-  color: #fff;
+    text-decoration: none;
+    color: #fff;
 }
 
 .listbar li a:hover {
-  text-decoration: none;
-  color: #fff;
+    text-decoration: none;
+    color: #fff;
 }
 
 .listbar button {
-  color: #fff;
+    color: #fff;
 }
 
 .listbar button:hover {
-  text-decoration: none;
-  color: #fff;
+    text-decoration: none;
+    color: #fff;
 }
 
 .listbar li:first-child {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 .central {
-  background-color: #2e7fa9 !important;
+    background-color: #2e7fa9 !important;
 }
 
 .list_detail {
-  background-color: #2e7fa9 !important;
-  list-style: none;
+    background-color: #2e7fa9 !important;
+    list-style: none;
 }
 
 .list_detail h4 {
-  text-align: center;
-  padding-top: 13px;
+    text-align: center;
+    padding-top: 13px;
 }
 
 .list_detail li:nth-child(2) {
-  text-align: center;
+    text-align: center;
 }
 
 .list_detail li:nth-child(4) {
-  margin-top: 17px;
-  margin-bottom: 19px;
-  text-align: center;
+    margin-top: 17px;
+    margin-bottom: 19px;
+    text-align: center;
 }
 
 .conteinerList_detail {
-  min-height: 291px;
+    min-height: 291px;
 }
 
 .central span {
-  text-align: center;
+    text-align: center;
 }
 
 .title h1:first-child {
-  color: #fff;
+    color: #fff;
 }
 
 .form-group label {
-  padding-bottom: 5px;
-  padding-top: 10px;
+    padding-bottom: 5px;
+    padding-top: 10px;
 }
 
 .form-group select {
-  margin: 9px 0px 7px;
-  padding: 3px;
+    margin: 9px 0px 7px;
+    padding: 3px;
 }
 
 .central button:last-child {
-  margin-bottom: 12px;
-  margin-top: 10px;
+    margin-bottom: 12px;
+    margin-top: 10px;
 }
 
 .central form {
-  padding-right: 30px;
+    padding-right: 30px;
 }
 
 .central h1 {
-  color: #fff;
-  text-align: center;
+    color: #fff;
+    text-align: center;
 }
 
 .contenido {
-  margin-bottom: 70px;
+    margin-bottom: 70px;
 }
 
 .central h2 {
-  padding: 97px;
-  text-align: center;
+    padding: 97px;
+    text-align: center;
 }
 
 .erroradmin {
-  font-size: 18px;
-  margin: 0 240px 50px 240px;
+    font-size: 18px;
+    margin: 0 240px 50px 240px;
 }

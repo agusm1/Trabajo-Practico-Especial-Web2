@@ -13,7 +13,6 @@
                         {if $username != ''}
                             <a class="btn btn-primary" href="deleteGame/{$game->id_game}">ELIMINAR</a>
                         {/if}
-
                     </li>
                 {/foreach}
             </ul>

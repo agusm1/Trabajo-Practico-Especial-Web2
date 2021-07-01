@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-06-2021 a las 16:02:06
+-- Tiempo de generación: 01-07-2021 a las 23:24:17
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.4
 
@@ -31,8 +31,21 @@ SET time_zone = "+00:00";
 CREATE TABLE `commentary` (
   `id_commentary` int(11) NOT NULL,
   `commentary` varchar(350) NOT NULL,
-  `id_game` int(11) NOT NULL
+  `vote` int(1) NOT NULL,
+  `id_match` int(11) NOT NULL,
+  `name_user` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `commentary`
+--
+
+INSERT INTO `commentary` (`id_commentary`, `commentary`, `vote`, `id_match`, `name_user`) VALUES
+(4, 'Muy buen juego', 5, 1, 'admin'),
+(7, 'Muy buen juego', 5, 3, 'admin'),
+(10, 'Me gusto mucho este juegazo', 5, 3, 'admin'),
+(15, 'No me gusta', 1, 1, 'admin'),
+(21, 'comentario de prueba', 1, 1, 'admin');
 
 -- --------------------------------------------------------
 
@@ -61,15 +74,8 @@ INSERT INTO `game` (`id_game`, `title`, `year`, `synopsis`, `id_genre`) VALUES
 (7, 'Uncharted: El tesoro de Drake', 2007, 'El juego se abre con Nathan Drake (Nolan North, voz inglesa) quien recupera el ataúd del explorador y ancestro de Nathan (tal como él mismo dice), Sir Francis Drake desde el fondo del océano, utilizando las coordenadas inscritas en un anillo en posesión de Nathan. El esfuerzo se paga a través de la empresa de la periodista Elena Fisher (Emily Rose), que está ahí para registrar los acontecimientos para un posible documental exitoso. El ataúd está vacío, sin cadáver, sólo contiene un diario escrito por Sir Francis Drake, que apunta a la ubicación de El Dorado, la legendaria ciudad de oro donde Sir Francis Drake fue para encontrar el tesoro, demostrando su falsa muerte como Nathan creía. ', 1),
 (8, 'The Elder Scrolls V: Skyrim', 2011, 'La agitación se extiende por el Imperio de Tamriel. El soberano de Skyrim ha sido asesinado. A medida que surgen aspirantes al trono, se van formando alianzas. En mitad de este conflicto, resurge un antiguo mal mucho más peligroso: los dragones, olvidados hace tiempo entre oscuros pasajes de los antiguos pergaminos, han regresado a Tamriel. El futuro de Skyrim, incluso el del propio Imperio, pende de un hilo, mientras aguardan la llegada vaticinada del Sangre de dragón, un héroe dotado del poder de La Voz, el único que puede hacer frente a los dragones.', 3),
 (14, 'Super Smash Bros: Brawl', 2008, 'Tras elegir entre una gran variedad de personajes, dos a cuatro jugadores lucharán en diferentes y variados escenarios mientras tratan de sacar a sus oponentes fuera del escenario. ... Incluye un modo de un jugador más extenso que sus predecesores, conocido como El emisario subespacial.', 1),
-(20, '1324', 3132, '133435', 1),
-(21, '1324', 3132, '133435', 1),
-(22, 'dgssfz', 0, 'gddj', 1),
-(23, 'dgssfz', 0, 'gddj', 1),
-(24, 'dgssfz', 0, 'gddj', 1),
-(25, 'dgssfz', 0, 'gddj', 1),
-(26, 'dgssfz', 0, 'gddj', 1),
-(27, 'dgssfz', 0, 'gddj', 1),
-(28, 'dgssfz', 0, 'gddj', 1);
+(33, 'Dark Souls', 2011, 'El juego tiene lugar en los últimos días de la Edad del Fuego, la cual comenzó tras la derrota de los Dragones de Piedra que anteriormente reinaban el mundo. Durante esta época el mundo era un lugar oscuro y lúgubre habitado solamente por una raza inmortal de dragones cuya capacidad de prolongar su vida eternamente provenía de sus escamas pétreas. En esta época aparentemente no existía aún ninguna llama, por lo que el mundo era un lugar completamente oscuro, amorfo y casi desierto.', 1),
+(34, 'Halo: Combat Evolved', 2001, 'El argumento del juego es relatado en el manual de instrucciones, y en los diálogos y narraciones de los personajes, así como algunas escenas. Halo inicia cuando el Pillar of Autumn sale del hiperespacio y llega a una misteriosa estación espacial en forma de anillo llamada «Halo» por el Covenant? Una flota Covenant ataca de repente la nave, dañándola seriamente. El capitán Jacob Keyes inicia entonces el «Protocolo Cole»,? un procedimiento diseñado para prevenir que el Covenant obtenga información sobre la ubicación de la Tierra. Mientras Keyes maniobra la nave para el aterrizaje en el planeta anillo, el Jefe Maestro y Cortana, junto a un grupo de marinos, huyen a través de una «cápsula de escape», la cual se estrella en la superficie del anillo; Cortana y el Jefe son los únicos que sobreviven al impacto de la cápsula.', 1);
 
 -- --------------------------------------------------------
 
@@ -100,8 +106,38 @@ INSERT INTO `genero` (`id_genre`, `name`) VALUES
 CREATE TABLE `image` (
   `id_image` int(11) NOT NULL,
   `path` varchar(100) NOT NULL,
-  `id_game` int(11) NOT NULL
+  `id_match` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `image`
+--
+
+INSERT INTO `image` (`id_image`, `path`, `id_match`) VALUES
+(13, 'images/60d4957f70d76.jpg', 33),
+(14, 'images/60d4957f85d69.jpg', 33),
+(15, 'images/60d4957f9a975.jpg', 33),
+(19, 'images/60d805b728417.jpg', 3),
+(20, 'images/60d805b741a5b.jpg', 3),
+(21, 'images/60d805b759930.jpg', 3),
+(22, 'images/60d805efed8f9.jpg', 3),
+(23, 'images/60d805f0032fb.jpg', 3),
+(24, 'images/60d805f00b7cc.jpg', 3),
+(25, 'images/60d806fc66e17.jpg', 3),
+(26, 'images/60d806fc71610.jpg', 3),
+(27, 'images/60d806fc7dd4b.jpg', 3),
+(28, 'images/60d8071f16a2a.jpg', 3),
+(29, 'images/60d8071f25874.jpg', 3),
+(30, 'images/60d8071f2f89e.jpg', 3),
+(31, 'images/60d8b0c69a5ce.jpg', 3),
+(32, 'images/60d8b0c6b6edb.jpg', 3),
+(33, 'images/60d8b0c6c39fe.jpg', 3),
+(35, 'images/60da96fa48424.jpg', 1),
+(36, 'images/60da96fa639a9.jpg', 1),
+(37, 'images/60ddddeadf858.jpg', 6),
+(38, 'images/60ddddeaf38ac.jpg', 6),
+(39, 'images/60ddffcabde77.jpg', 34),
+(40, 'images/60ddffcaeebbf.jpg', 34);
 
 -- --------------------------------------------------------
 
@@ -111,16 +147,22 @@ CREATE TABLE `image` (
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `usuario` varchar(150) NOT NULL,
-  `contraseña` varchar(240) NOT NULL
+  `user` varchar(150) NOT NULL,
+  `password` varchar(240) NOT NULL,
+  `admin` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`id`, `usuario`, `contraseña`) VALUES
-(5, 'admin', '$2y$10$gihck7uYf/VDJRoW/59vUOcv.EHrZGPp4fdj/xonJoYRRjmkL2VAS');
+INSERT INTO `user` (`id`, `user`, `password`, `admin`) VALUES
+(5, 'admin', '$2y$10$gihck7uYf/VDJRoW/59vUOcv.EHrZGPp4fdj/xonJoYRRjmkL2VAS', 1),
+(6, 'Usuario_1', '$2y$10$7iYTNpYgkIrg8s1IfiEiU.ImDqhWNNkrepiZ3kxYC6OxhWz2a98GG', 0),
+(7, 'Usuario_2', '$2y$10$NGiG33eXe8fkV0j/Px0xzeLVCYT.C.GGPXAbKovBlgO8kO/p.vCgy', 0),
+(8, 'Usuario_3', '$2y$10$cHZZJ77hH.TEw7Uc14oEz.plOF9TnuSAWIxGbcr8SUis5Z3GKsv3G', 0),
+(9, 'Usuario_3', '$2y$10$PoNqXyF8uT2DmcZ2AOPk8.NT5Ey0J7TC6WdH7JVQ/VY.JIqWp3pd.', 0),
+(10, 'Usuario4', '$2y$10$plcbS3kwQFw1ZpC9XDos0ulhq2LZaZXgx.6JXZnkUXnBKsbY6n3F6', 0);
 
 --
 -- Índices para tablas volcadas
@@ -131,7 +173,8 @@ INSERT INTO `user` (`id`, `usuario`, `contraseña`) VALUES
 --
 ALTER TABLE `commentary`
   ADD PRIMARY KEY (`id_commentary`),
-  ADD KEY `fk_commentary_game` (`id_game`);
+  ADD KEY `fk_commentary_game` (`id_match`),
+  ADD KEY `fk_commentary_user` (`name_user`);
 
 --
 -- Indices de la tabla `game`
@@ -152,7 +195,7 @@ ALTER TABLE `genero`
 --
 ALTER TABLE `image`
   ADD PRIMARY KEY (`id_image`),
-  ADD KEY `fk_image_game` (`id_game`);
+  ADD KEY `fk_image_game` (`id_match`);
 
 --
 -- Indices de la tabla `user`
@@ -168,13 +211,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `commentary`
 --
 ALTER TABLE `commentary`
-  MODIFY `id_commentary` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_commentary` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `game`
 --
 ALTER TABLE `game`
-  MODIFY `id_game` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_game` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `genero`
@@ -186,13 +229,13 @@ ALTER TABLE `genero`
 -- AUTO_INCREMENT de la tabla `image`
 --
 ALTER TABLE `image`
-  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Restricciones para tablas volcadas
@@ -202,8 +245,7 @@ ALTER TABLE `user`
 -- Filtros para la tabla `commentary`
 --
 ALTER TABLE `commentary`
-  ADD CONSTRAINT `fk_commentary_game` FOREIGN KEY (`id_game`) REFERENCES `game` (`id_game`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_commentary_user` FOREIGN KEY (`id_commentary`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_commentary_game` FOREIGN KEY (`id_match`) REFERENCES `game` (`id_game`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `game`
@@ -215,7 +257,7 @@ ALTER TABLE `game`
 -- Filtros para la tabla `image`
 --
 ALTER TABLE `image`
-  ADD CONSTRAINT `fk_image_game` FOREIGN KEY (`id_game`) REFERENCES `game` (`id_game`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_image_game` FOREIGN KEY (`id_match`) REFERENCES `game` (`id_game`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
