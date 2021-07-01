@@ -51,4 +51,17 @@ class UserModel extends Model
         $create = $query->execute([$commentary, $vote, $name_user, $id_game]);
         return $create;
     }
+
+    public function getImages($id_game){
+        $query = $this->getDb()->prepare("SELECT image.id_image, image.path FROM `image` JOIN `game` ON image.id_match = game.id_game WHERE game.id_game = ?");
+        $query-> execute([$id_game]);
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function deleteImg($id_image){
+        $query = $this->getDb()->prepare('DELETE FROM image WHERE id_image = ?');
+        $query->execute([$id_image]);
+        return $query;
+    }
 }
+

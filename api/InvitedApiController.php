@@ -35,10 +35,32 @@ class InvitedApiController
     public function insertCommentary($params = [])
     {
         $comment = $this->getData();
-        $inserted = $this->usermodel->insertCommentary($comment->commentary, 
-        $comment->vote, $comment->username, $comment->id_game);
+        $inserted = $this->usermodel->insertCommentary(
+            $comment->commentary,
+            $comment->vote,
+            $comment->username,
+            $comment->id_game
+        );
         if ($inserted) {
             $this->view->response($comment, 200);
+        } else {
+            $this->view->response("Error", 500);
+        }
+    }
+    public function getImages($params = [])
+    {
+
+        $id_game = $params[':ID'];
+        $images = $this->usermodel->getImages($id_game);
+        $this->view->response($images, 200);
+    }
+    public function deleteImage($params = [])
+    {
+
+        $id_image = $params[':ID'];
+        $image = $this->usermodel->deleteImg($id_image);
+        if ($image) {
+            $this->view->response($image, 200);
         } else {
             $this->view->response("Error", 500);
         }

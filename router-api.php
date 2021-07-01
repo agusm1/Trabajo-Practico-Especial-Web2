@@ -8,8 +8,8 @@ $router = new Router();
 // define la tabla de ruteo
 $router->addRoute('game/:ID', 'GET', 'InvitedApiController', 'getCommentsForGame');
 $router->addRoute('new', 'POST', 'InvitedApiController', 'insertCommentary');
-
-
+$router->addRoute('images/:ID', 'GET', 'InvitedApiController', 'getImages');
+$router->addRoute('image/:ID', 'DELETE', 'InvitedApiController', 'deleteImage');
 //$router->addRoute('tarea', 'POST', 'InvitedApiController', 'addTask');
 
 

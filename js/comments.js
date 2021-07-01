@@ -1,7 +1,6 @@
 let app = new Vue({
     el: "#Vue-comments",
     data: {
-        subtitle: "Esto es un subtitulo random", //esto funciona
         comments: []
     },
     methods: {
@@ -14,7 +13,7 @@ let app = new Vue({
     },
 });
 app.getComments();
-form = document.getElementById('newCommentary');
+let form = document.getElementById('newCommentary');
 form.addEventListener('submit', addComment);
 
 function getComments() {
@@ -23,7 +22,6 @@ function getComments() {
     fetch("api/game/" + id_game)
         .then(response => { return response.json() })
         .then(comments => {
-            //console.log(comments[0]);
             comments.forEach(comment => {
                 app.loadComment(comment)
             });
@@ -50,5 +48,47 @@ function addComment(evt) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(comment)
     }).then(response => getComments())
+}
+
+let img = new Vue({
+    el: "#Vue-images",
+    data: {
+        subtitle: "Esto es un subtitulo random", //esto funciona
+        images: []
+    },
+    methods: {
+        getImages: function() {
+            getImages();
+        },
+        deleteImage: function(id_image) {
+            deleteImage(id_image);
+        }
+    },
+});
+
+img.getImages();
+
+function getImages() {
+    let urlParts = window.location.href.split('/');
+    let id_game = urlParts[urlParts.length - 1];
+
+    fetch("api/images/" + id_game)
+        .then(response => { return response.json() })
+        .then(images => {
+            img.images = images;
+        })
+        .catch(error => { console.log(error) });
+};
+
+function deleteImage(id_image) {
+
+    fetch('api/image/' + id_image, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+        }).then(response => { return response.json() })
+        .then(images => {
+            img.getImages();
+        })
+        .catch(error => { console.log(error) })
 
 }

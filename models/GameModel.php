@@ -14,7 +14,7 @@ class GameModel extends Model{
     }
 
     public function getImages($id_game){
-        $query = $this->getDb()->prepare("SELECT image.path FROM `image` JOIN `game` ON image.id_game = game.id_game WHERE game.id_game = ?");
+        $query = $this->getDb()->prepare("SELECT image.path FROM `image` JOIN `game` ON image.id_match = game.id_game WHERE game.id_game = ?");
         $query-> execute([$id_game]);
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
@@ -45,7 +45,7 @@ class GameModel extends Model{
         $result= $query->execute([$title, $year, $synopsis, $id_genre]);
         if($result){
             $id_game = $this->getDb()->lastInsertId();
-            $query_img = $this->getDb()->prepare('INSERT INTO image (path, id_game) values (?,?)');
+            $query_img = $this->getDb()->prepare('INSERT INTO image (path, id_match) values (?,?)');
             
             foreach($_FILES["imagesToUpload"]["tmp_name"] as $key => $tmp_name)
             {
@@ -57,7 +57,7 @@ class GameModel extends Model{
     }
 
     public function uploadImages($id_game){
-        $query = $this->getDb()->prepare('INSERT INTO image (path, id_game) values (?,?)');
+        $query = $this->getDb()->prepare('INSERT INTO image (path, id_match) values (?,?)');
         foreach($_FILES["imagesToUpload"]["tmp_name"] as $key => $tmp_name)
             {
                 $destino_final = "images/".uniqid().".jpg";
