@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-07-2021 a las 23:24:17
+-- Tiempo de generación: 04-07-2021 a las 18:55:58
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.4
 
@@ -45,7 +45,8 @@ INSERT INTO `commentary` (`id_commentary`, `commentary`, `vote`, `id_match`, `na
 (7, 'Muy buen juego', 5, 3, 'admin'),
 (10, 'Me gusto mucho este juegazo', 5, 3, 'admin'),
 (15, 'No me gusta', 1, 1, 'admin'),
-(21, 'comentario de prueba', 1, 1, 'admin');
+(21, 'comentario de prueba', 1, 1, 'admin'),
+(24, 'Comentario x', 3, 1, 'Generico2');
 
 -- --------------------------------------------------------
 
@@ -158,11 +159,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `user`, `password`, `admin`) VALUES
 (5, 'admin', '$2y$10$gihck7uYf/VDJRoW/59vUOcv.EHrZGPp4fdj/xonJoYRRjmkL2VAS', 1),
-(6, 'Usuario_1', '$2y$10$7iYTNpYgkIrg8s1IfiEiU.ImDqhWNNkrepiZ3kxYC6OxhWz2a98GG', 0),
-(7, 'Usuario_2', '$2y$10$NGiG33eXe8fkV0j/Px0xzeLVCYT.C.GGPXAbKovBlgO8kO/p.vCgy', 0),
-(8, 'Usuario_3', '$2y$10$cHZZJ77hH.TEw7Uc14oEz.plOF9TnuSAWIxGbcr8SUis5Z3GKsv3G', 0),
-(9, 'Usuario_3', '$2y$10$PoNqXyF8uT2DmcZ2AOPk8.NT5Ey0J7TC6WdH7JVQ/VY.JIqWp3pd.', 0),
-(10, 'Usuario4', '$2y$10$plcbS3kwQFw1ZpC9XDos0ulhq2LZaZXgx.6JXZnkUXnBKsbY6n3F6', 0);
+(14, 'Generico1', '$2y$10$aiN0nP6AYe2slu9n4I/bSek7JEnGm63GQGCD8vDQOENtDFJhced0e', 0),
+(15, 'Generico2', '$2y$10$MujleZynlYdQf3QlhDN4UupnrMj9t1Xh9SHzLd.GmNpmKShAcqlIa', 0);
 
 --
 -- Índices para tablas volcadas
@@ -211,7 +209,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `commentary`
 --
 ALTER TABLE `commentary`
-  MODIFY `id_commentary` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_commentary` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `game`
@@ -235,7 +233,7 @@ ALTER TABLE `image`
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Restricciones para tablas volcadas

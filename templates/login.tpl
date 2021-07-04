@@ -4,11 +4,11 @@
     <form action="verify" method="POST">
         <div class="form-group">
             <label>Ingrese su Usuario</label>
-            <input name="username" type="text" class="form-control" placeholder="Ingrese su usuario">
+            <input name="username" type="text" class="form-control" placeholder="Ingrese su usuario" required>
         </div>
         <div class="form-group">
             <label>Ingrese su Contraseña</label>
-            <input name="password" type="password" class="form-control" placeholder="Ingrese su contraseña">
+            <input name="password" type="password" class="form-control" placeholder="Ingrese su contraseña" required>
         </div>
 
         {if $error}

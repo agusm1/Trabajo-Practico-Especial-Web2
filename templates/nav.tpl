@@ -11,12 +11,18 @@
                     <a class="nav-link active icon" href="home"><img src="{$base_url}/img/icono_home.png"></a>
                 </li>
             </ul>
+            <form action="results" method="POST" class="form-inline buscador">
+                <input name="search" class="form-control mr-sm-2" type="search" placeholder="Buscador" required>
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
             {if $username != ''}
                 <div class="navbar-nav ml-auto">
-                    <span class="navbar-text nav-link active">{$username|capitalize}</span>
-                    <a class="nav-item nav-link " href="logout">Logout<span class="sr-only"></span></a>
+                    <a class="nav-item nav-link " href="admin"> <span
+                            class="navbar-text nav-link active">{$username|capitalize}</span></a>
+                    <a class="nav-item nav-link " href="logout"><span class="navbar-text nav-link">Logout</span></a>
                 </div>
             {else}
+
                 <div class="navbar-nav ml-auto">
                     <a class="nav-item nav-link " href="login">Login<span class="sr-only"></span></a>
                 </div>

@@ -8,16 +8,16 @@
                 <form action="updateGame/{$g->id_game}" method="POST">
                     <div class="form-group">
                         <label>Ingrese el nombre del juego</label>
-                        <input name="nombre" type="text" class="form-control" value="{$g->title}">
+                        <input name="nombre" type="text" class="form-control" value="{$g->title}" required>
                     </div>
                     <div class="form-group">
                         <label>Ingrese el año del juego</label>
-                        <input name="anio" type="text" class="form-control" value="{$g->year}">
+                        <input name="anio" type="text" class="form-control" value="{$g->year}" required>
                     </div>
                     <div class="form-group">
                         <label>Ingrese la sinopsis del juego</label>
                         <textarea name="sinopsis" class="form-control" id="exampleFormControlTextarea1" rows="3"
-                            placeholder="{$g->synopsis}" value="{$g->synopsis}"></textarea>
+                            placeholder="{$g->synopsis}" value="{$g->synopsis}" required></textarea>
                     </div>
                     <div class="form-group">
                         <select name="genero">

@@ -22,13 +22,25 @@ class AuthHelper {
             return false;
         }
     }
+    
+    public static function getLoggedAdmin(){
+        self::start();
+        if (!empty($_SESSION['ADMIN'])){
+            if ($_SESSION['ADMIN'] == 1){
+                return $_SESSION['ADMIN'];
+            }
+        }
+        else {
+            return false;
+        }
+    }
+
     public static function checkAdmin(){
         self::start();
         if (empty($_SESSION['ADMIN'])){
             header('Location: ' . BASE_URL . "errorAdmin");
             die;
         }
-
     }
     // Chequea si el usuario esta logueado
     public static function checkLoggedIn(){

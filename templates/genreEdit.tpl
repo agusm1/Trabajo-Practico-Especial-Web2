@@ -8,7 +8,7 @@
                 <form action="updateGenre/{$g->id_genre}" method="POST">
                     <div class="form-group">
                         <label>Ingrese nombre del genero</label>
-                        <input name="nombre" type="text" class="form-control" placeholder="{$g->name}">
+                        <input name="nombre" type="text" class="form-control" placeholder="{$g->name}" required>
                     </div>
                     <input type="submit" class="btn btn-primary">
                 </form>

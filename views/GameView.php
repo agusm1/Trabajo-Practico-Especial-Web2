@@ -10,7 +10,9 @@ class GameView extends View{
     parent::__construct();
     $authHelper = new AuthHelper();
     $username = $authHelper->getLoggedUserName();
+    $admin = $authHelper->getLoggedAdmin();
     $this->getSmarty()->assign('username', $username);
+    $this->getSmarty()->assign('admin', $admin);
   }
 
   public function showformGenre($genres){
@@ -91,4 +93,13 @@ class GameView extends View{
     $this->getSmarty()->assign('genres', $genres);
     $this->getSmarty()->display('templates/formImages.tpl');
   }
+
+  public function result($result, $genres){
+    $this->getSmarty()->assign('title', 'Resultado de la Busqueda');
+    $this->getSmarty()->assign('genres', $genres);
+    $this->getSmarty()->assign('result', $result);
+    $this->getSmarty()->display('templates/searchResult.tpl');
+
+  }
+
 }

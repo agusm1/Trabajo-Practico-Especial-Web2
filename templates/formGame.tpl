@@ -8,15 +8,15 @@
             <form action="createGame" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>Ingrese el nombre del juego</label>
-                    <input name="nombre" type="text" class="form-control" placeholder="Ingrese el nombre del juego">
+                    <input name="nombre" type="text" class="form-control" placeholder="Ingrese el nombre del juego" required>
                 </div>
                 <div class="form-group">
                     <label>Ingrese el año del juego</label>
-                    <input name="anio" type="text" class="form-control" placeholder="Ingrese el año del juego">
+                    <input name="anio" type="text" class="form-control" placeholder="Ingrese el año del juego" required>
                 </div>
                 <div class="form-group">
                     <label>Ingrese la sinopsis del juego</label>
-                    <input name="sinopsis" type="text" class="form-control" placeholder="Ingrese la sinopsis del juego">
+                    <input name="sinopsis" type="text" class="form-control" placeholder="Ingrese la sinopsis del juego" required>
                 </div>
                 <div class="form-group">
                     <select name="genero">

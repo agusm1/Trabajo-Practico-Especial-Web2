@@ -39,6 +39,7 @@ class InvitedApiController
     }
     public function insertCommentary($params = [])
     {
+
         $comment = $this->getData();
         $inserted = $this->commentmodel->insert(
             $comment->commentary,
@@ -54,7 +55,6 @@ class InvitedApiController
     }
 
     public function deleteComment($params = []){
-        
         $id_commentary = $params[':ID'];
         $comment =$this->commentmodel->delete($id_commentary);
         if ($comment) {
@@ -74,7 +74,7 @@ class InvitedApiController
 
     public function deleteImage($params = [])
     {
-
+        AuthHelper::checkAdmin();
         $id_image = $params[':ID'];
         $image = $this->imagemodel->delete($id_image);
         if ($image) {

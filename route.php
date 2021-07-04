@@ -73,8 +73,8 @@ switch ($parametros[0]) {
     case 'uploadImage':
         $InvitedController->uploadImage();
         break;
-    case 'eliminarImg':
-        $InvitedController->deleteImg($parametros[1]);
+    case 'results':
+        $InvitedController->searchResults();
         break;
     case 'verify': // Verifica que exista el usuario 
         $UserController->verify();

@@ -1,6 +1,9 @@
+let admins = document.getElementById('admin').value;
 let app = new Vue({
     el: "#Vue-comments",
     data: {
+        title: "Comentarios",
+        admin: admins,
         comments: []
     },
     methods: {
@@ -40,6 +43,7 @@ function addComment(evt) {
         "username": username,
         "id_game": id_game,
     }
+    console.log(comment);
 
     fetch("api/new", {
         method: "POST",
@@ -56,48 +60,6 @@ function deleteComment(id_commentary) {
         }).then(response => { return response.json() })
         .then(comment => {
             app.getComments();
-        })
-        .catch(error => { console.log(error) })
-}
-
-let img = new Vue({
-    el: "#Vue-images",
-    data: {
-        subtitle: "Esto es un subtitulo random", //esto funciona
-        images: []
-    },
-    methods: {
-        getImages: function() {
-            getImages();
-        },
-        deleteImage: function(id_image) {
-            deleteImage(id_image);
-        }
-    },
-});
-
-img.getImages();
-
-function getImages() {
-    let urlParts = window.location.href.split('/');
-    let id_game = urlParts[urlParts.length - 1];
-
-    fetch("api/images/" + id_game)
-        .then(response => { return response.json() })
-        .then(images => {
-            img.images = images;
-        })
-        .catch(error => { console.log(error) });
-};
-
-function deleteImage(id_image) {
-
-    fetch('api/image/' + id_image, {
-            method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' },
-        }).then(response => { return response.json() })
-        .then(images => {
-            img.getImages();
         })
         .catch(error => { console.log(error) })
 }

@@ -4,7 +4,7 @@
             <a class="btn" href='generos'><i class="fa fa-bars" aria-hidden="true"></i> Lista de
                 generos</a>
         </li>
-        {if $username != ''}
+        {if $admin == 1}
             <li>
                 <a class="btn" href="formgame"><i class="fa fa-plus" aria-hidden="true"></i> Crear juego</a> <br>
             </li>

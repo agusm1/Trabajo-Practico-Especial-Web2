@@ -8,13 +8,16 @@ class AdminView extends View {
         parent::__construct();
         $authHelper = new AuthHelper();
         $username = $authHelper->getLoggedUserName();
+        $admin = $authHelper->getLoggedAdmin();
         $this->getSmarty()->assign('username', $username);
+        $this->getSmarty()->assign('admin', $admin);
     }
 
-    public function showAdmin($users){
+    public function showAdmin($users, $games, $genres){
         $this->getSmarty()->assign('title', 'Vista de Administrador');
         $this->getSmarty()->assign('users', $users);
-
+        $this->getSmarty()->assign('games', $games);
+        $this->getSmarty()->assign('genres', $genres);
         $this->getSmarty()->display('templates/admin.tpl');
     }
 

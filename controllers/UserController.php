@@ -1,6 +1,8 @@
 <?php
 
 require_once 'models/UserModel.php';
+require_once 'models/GameModel.php';
+require_once 'models/GenreModel.php';
 require_once 'views/UserView.php';
 require_once 'views/AdminView.php';
 
@@ -9,12 +11,16 @@ class UserController
     private $usermodel;
     private $userview;
     private $adminview;
+    private $gamemodel;
+    private $genremodel;
 
     public function __construct()
     {
         $this->usermodel = new UserModel();
         $this->userview = new UserView();
         $this->adminview = new AdminView();
+        $this->gamemodel = new GameModel();
+        $this->genremodel = new GenreModel();
     }
 
     public function showLogin()
@@ -26,8 +32,9 @@ class UserController
     {
         AuthHelper::checkAdmin();
         $users = $this->usermodel->getAll();
-
-        $this->adminview->showAdmin($users);
+        $games = $this->gamemodel->getAll();
+        $genres = $this->genremodel->getAll();
+        $this->adminview->showAdmin($users, $games, $genres);
     }
 
     public function showRegistrar()
@@ -87,7 +94,6 @@ class UserController
         /**
          * Segun el numero que recibe en la variable $admin añadira o quitara los permisos de administrador
          */
-        
         if(empty($admin)){
             $this->usermodel->modify($id, $admin);
         }else{
@@ -108,7 +114,7 @@ class UserController
     }
 
     public function deleteUser($id){
-
+        AuthHelper::checkAdmin();
         $this->usermodel->delete($id);
         header("Location: " . BASE_URL . 'admin');
     }

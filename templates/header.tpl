@@ -20,3 +20,4 @@
 <body>
     {include file="nav.tpl"}
     <div class="contenido">
+    <input id="admin" value="{$admin}" type="hidden">

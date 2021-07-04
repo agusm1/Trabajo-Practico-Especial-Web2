@@ -73,7 +73,7 @@ class InvitedController
          * 2. Recibe el nombre que mando el usuario y pregunta a la base de datos si ese nombre ya existe
          * 3. Si el genero existe marca un error, si no existe lo registra en la tabla genero de la BBDD
          */
-        AuthHelper::checkLoggedIn();
+        AuthHelper::checkAdmin();
         $namegenre = $_POST['nombre'];
         $haygenero = $this->modelgenre->getName($namegenre);
         if ($haygenero) {
@@ -93,7 +93,7 @@ class InvitedController
          * 2. Recibe los datos del juego que mando el usuario y pregunta si no estan vacios y los asigna a una variable
          * 3. Si alguno de los campos esta vacio marca error, si todos estan completos lo registra en la tabla game de la BBDD
          */
-        AuthHelper::checkLoggedIn();
+        AuthHelper::checkAdmin();
         $titulo = $_POST['nombre'];
         $anio = $_POST['anio'];
         $sinopsis = $_POST['sinopsis'];
@@ -135,14 +135,14 @@ class InvitedController
 
     public function deleteGame($id_game)
     {
-        AuthHelper::checkLoggedIn();
+        AuthHelper::checkAdmin();
         $this->modelgames->delete($id_game);
         header("Location: " . BASE_URL . 'home');
     }
 
     public function deleteGenre($id_genre)
     {
-        AuthHelper::checkLoggedIn();
+        AuthHelper::checkAdmin();
         $this->modelgenre->delete($id_genre);
         header("Location: " . BASE_URL . 'generos');
     }
@@ -157,7 +157,7 @@ class InvitedController
 
     public function updateGame($id_game)
     {
-        AuthHelper::checkLoggedIn();
+        AuthHelper::checkAdmin();
         $titulo = $_POST['nombre'];
         $anio = $_POST['anio'];
         $sinopsis = $_POST['sinopsis'];
@@ -172,7 +172,7 @@ class InvitedController
 
     public function showeditGenre($id_genre)
     {
-        AuthHelper::checkLoggedIn();
+        AuthHelper::checkAdmin();
         $genres = $this->modelgenre->get($id_genre);
         $game = $this->modelgames->getAll();
         $this->view->showEditGenre($genres, $game, $id_genre);
@@ -180,7 +180,7 @@ class InvitedController
 
     public function updateGenre($id_genre)
     {
-        AuthHelper::checkLoggedIn();
+        AuthHelper::checkAdmin();
         $nombre = $_POST['nombre'];
         if ($nombre != '') {
             $this->modelgenre->update($id_genre, $nombre);
@@ -192,7 +192,7 @@ class InvitedController
 
     public function showformImage()
     {
-
+        AuthHelper::checkAdmin();
         $games = $this->modelgames->getAll();
         $genres = $this->modelgenre->getAll();
         $this->view->formImage($games, $genres);
@@ -200,6 +200,7 @@ class InvitedController
 
     public function uploadImage()
     {
+        AuthHelper::checkAdmin();
         $id_game = $_POST['game'];
         $images = $this->imagemodel->upload($id_game);
         if ($images != false)
@@ -208,6 +209,26 @@ class InvitedController
         } else {
             $this->view->showError("Error 500 Server Internal Error");
         }
+    }
+
+    public function searchResults(){
+        
+        $search = $_POST['search'];
+        $genres = $this->modelgenre->getAll();
+        if($search != ''){
+            $result = $this->modelgames->search($search);
+
+            if($result){
+                $this->view->result($result, $genres);
+            }
+            else {
+                $this->view->showError("No se encontro ningun juego con el titulo/año que ingreso");    
+            }
+        }
+        else{
+            $this->view->showError("Debe ingresar el campo obligatorio");
+        }
+
     }
 
     public function showError()
