@@ -1,5 +1,5 @@
 <div class="col-md-3 baroption">
-    <ul class="listbar">
+    <ul class="listbar fondo">
         <li>
             <a class="btn" href='generos'><i class="fa fa-bars" aria-hidden="true"></i> Lista de
                 generos</a>

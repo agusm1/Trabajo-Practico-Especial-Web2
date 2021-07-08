@@ -74,8 +74,10 @@ class GameModel extends Model
 
     public function search($search)
     {
-        $query = $this->getDb()->prepare("SELECT * FROM game WHERE title LIKE ? OR year LIKE ?");
-        $query->execute([$search, $search]);
+        $patron = '%'. $search .'%';
+        $sql = "SELECT * FROM game WHERE title LIKE ? OR year LIKE ?";
+        $query = $this->getDb()->prepare($sql);
+        $query->execute([$patron, $patron]);
         return $query->fetchAll(PDO::FETCH_OBJ);;
     }
 }

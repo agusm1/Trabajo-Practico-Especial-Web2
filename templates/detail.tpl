@@ -3,7 +3,7 @@
     <div class="row align-items-start title">
         <h1>{$title}</h1>
         {include file="baroption.tpl"}
-        <div class="col-md-9">
+        <div class="col-md-9 ">
             <ul class="list-group">
                 {foreach from=$game item=g }
                     <li class="list-group-item central">
@@ -26,7 +26,7 @@
                 {/foreach}
             </ul>
             {if $username != ''}
-                <div style="background-color: #ffff;">
+                <div class="newcommentary">
                     <form method="POST" id="newCommentary">
                         <input type="text" name="commentary" id="commentary" placeholder="Ingrese un comentario">
                         <select name="vote" id="vote">
@@ -36,12 +36,12 @@
                             <option value='4'> 4</option>
                             <option value='5'> 5</option>
                         </select>
-                        <input type="text" id="username" value="{$username}" disabled>
+                        <input type="hidden" id="username" value="{$username}" type="hidden" disabled>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </form>
-                </div>
-            {/if}
-            {include file="vue/comments.vue"}
+                {/if}
+                {include file="vue/comments.vue"}
+            </div>
         </div>
     </div>
 </div>

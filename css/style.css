@@ -155,3 +155,41 @@ footer {
     display: inline-block;
     width: 160px;
 }
+
+.newcommentary {
+    background-color: #1e1e1e;
+    padding: 10px;
+    color: #dee6eb;
+}
+
+.newcommentary form input:first-child {
+    background-color: #3a3b3c;
+    border-radius: 13px;
+    color: #ffff;
+    padding: 4px 0px 4px 12px;
+}
+
+#Vue-comments .list-none li {
+    margin: 8px 0 30px;
+    height: 35px;
+}
+
+#Vue-comments .list-none li p {
+    background-color: #3a3b3c;
+    padding: 5px 30px 5px 12px;
+    border-radius: 13px;
+    width: auto;
+    display: inline-block;
+}
+
+#Vue-comments .list-none li p span {
+    font-size: 14px;
+}
+
+#Vue-comments .list-none li span button {
+    float: right;
+    border-radius: 40px;
+    color: #fff;
+    background-color: #18191a;
+    height: 30px;
+}
