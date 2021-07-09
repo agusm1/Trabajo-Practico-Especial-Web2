@@ -27,8 +27,12 @@ class InvitedController
          * Crea dos variables que contienen todos los juegos y todos los generos y los manda a la vista home
          */
         $games = $this->modelgames->getAll();
+        $cant = count($games);
+        $gamesxpag = 3;
+        $pag = ceil($cant / $gamesxpag);
+
         $genres = $this->modelgenre->getAll();
-        $this->view->home($games, $genres);
+        $this->view->home($games, $genres, $pag);
     }
 
     public function showGenre()
@@ -203,32 +207,29 @@ class InvitedController
         AuthHelper::checkAdmin();
         $id_game = $_POST['game'];
         $images = $this->imagemodel->upload($id_game);
-        if ($images != false)
-        {
-            header("Location: " . BASE_URL . 'home'); 
+        if ($images != false) {
+            header("Location: " . BASE_URL . 'home');
         } else {
             $this->view->showError("Error 500 Server Internal Error");
         }
     }
 
-    public function searchResults(){
-        
+    public function searchResults()
+    {
+
         $search = $_POST['search'];
         $genres = $this->modelgenre->getAll();
-        if($search != ''){
+        if ($search != '') {
             $result = $this->modelgames->search($search);
 
-            if($result){
+            if ($result) {
                 $this->view->result($result, $genres);
+            } else {
+                $this->view->showError("No se encontro ningun juego con el titulo/año que ingreso");
             }
-            else {
-                $this->view->showError("No se encontro ningun juego con el titulo/año que ingreso");    
-            }
-        }
-        else{
+        } else {
             $this->view->showError("Debe ingresar el campo obligatorio");
         }
-
     }
 
     public function showError()

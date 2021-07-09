@@ -30,14 +30,14 @@
                     <form method="POST" id="newCommentary">
                         <input type="text" name="commentary" id="commentary" placeholder="Ingrese un comentario">
                         <select name="vote" id="vote">
-                            <option value='1'> 1</option>
-                            <option value='2'> 2</option>
-                            <option value='3'> 3</option>
-                            <option value='4'> 4</option>
-                            <option value='5'> 5</option>
+                            <option value='1'> 1 </option>
+                            <option value='2'> 2 </option>
+                            <option value='3'> 3 </option>
+                            <option value='4'> 4 </option>
+                            <option value='5'> 5 </option>
                         </select>
                         <input type="hidden" id="username" value="{$username}" type="hidden" disabled>
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <button type="submit" class="btn"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
                     </form>
                 {/if}
                 {include file="vue/comments.vue"}

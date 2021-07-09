@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-07-2021 a las 05:43:33
+-- Tiempo de generación: 09-07-2021 a las 04:07:39
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.4
 
@@ -45,7 +45,9 @@ INSERT INTO `commentary` (`id_commentary`, `commentary`, `vote`, `id_match`, `na
 (7, 'Muy buen juego', 5, 3, 'admin'),
 (10, 'Me gusto mucho este juegazo', 5, 3, 'admin'),
 (15, 'No me gusta', 1, 1, 'admin'),
-(25, 'Malisimo', 1, 1, 'Generico2');
+(25, 'Malisimo', 1, 1, 'Generico2'),
+(26, 'Falla en su jugabilidad', 3, 1, 'admin'),
+(27, 'Me gusto mucho este juego', 5, 34, 'admin');
 
 -- --------------------------------------------------------
 
@@ -208,7 +210,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `commentary`
 --
 ALTER TABLE `commentary`
-  MODIFY `id_commentary` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_commentary` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `game`
@@ -226,7 +228,7 @@ ALTER TABLE `genero`
 -- AUTO_INCREMENT de la tabla `image`
 --
 ALTER TABLE `image`
-  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `user`

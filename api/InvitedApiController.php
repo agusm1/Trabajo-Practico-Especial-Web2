@@ -74,7 +74,6 @@ class InvitedApiController
 
     public function deleteImage($params = [])
     {
-        AuthHelper::checkAdmin();
         $id_image = $params[':ID'];
         $image = $this->imagemodel->delete($id_image);
         if ($image) {
