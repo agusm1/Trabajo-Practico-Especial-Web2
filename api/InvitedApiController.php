@@ -14,6 +14,7 @@ class InvitedApiController
     private $view;
     private $data;
     private $imagemodel;
+    private $commentmodel;
 
     public function __construct()
     {
