@@ -9,7 +9,7 @@
                     <li class="list-group-item central">
                         <h4>{$genre->name} </h4>
                         <a class="btn btn-primary" href="gamesforgenero/{$genre->id_genre}">Ver juegos</a>
-                        {if $username != ''}
+                        {if $admin == 1}
                             <a class="btn btn-primary" href="showformgenre/{$genre->id_genre}">Editar genero</a>
                             <a class="btn btn-primary" href="deleteGenre/{$genre->id_genre}">Eliminar genero</a>
                         {/if}
