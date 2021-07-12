@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-07-2021 a las 04:07:39
+-- Tiempo de generación: 12-07-2021 a las 19:36:51
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.4
 
@@ -77,7 +77,8 @@ INSERT INTO `game` (`id_game`, `title`, `year`, `synopsis`, `id_genre`) VALUES
 (8, 'The Elder Scrolls V: Skyrim', 2011, 'La agitación se extiende por el Imperio de Tamriel. El soberano de Skyrim ha sido asesinado. A medida que surgen aspirantes al trono, se van formando alianzas. En mitad de este conflicto, resurge un antiguo mal mucho más peligroso: los dragones, olvidados hace tiempo entre oscuros pasajes de los antiguos pergaminos, han regresado a Tamriel. El futuro de Skyrim, incluso el del propio Imperio, pende de un hilo, mientras aguardan la llegada vaticinada del Sangre de dragón, un héroe dotado del poder de La Voz, el único que puede hacer frente a los dragones.', 3),
 (14, 'Super Smash Bros: Brawl', 2008, 'Tras elegir entre una gran variedad de personajes, dos a cuatro jugadores lucharán en diferentes y variados escenarios mientras tratan de sacar a sus oponentes fuera del escenario. ... Incluye un modo de un jugador más extenso que sus predecesores, conocido como El emisario subespacial.', 1),
 (33, 'Dark Souls', 2011, 'El juego tiene lugar en los últimos días de la Edad del Fuego, la cual comenzó tras la derrota de los Dragones de Piedra que anteriormente reinaban el mundo. Durante esta época el mundo era un lugar oscuro y lúgubre habitado solamente por una raza inmortal de dragones cuya capacidad de prolongar su vida eternamente provenía de sus escamas pétreas. En esta época aparentemente no existía aún ninguna llama, por lo que el mundo era un lugar completamente oscuro, amorfo y casi desierto.', 1),
-(34, 'Halo: Combat Evolved', 2001, 'El argumento del juego es relatado en el manual de instrucciones, y en los diálogos y narraciones de los personajes, así como algunas escenas. Halo inicia cuando el Pillar of Autumn sale del hiperespacio y llega a una misteriosa estación espacial en forma de anillo llamada «Halo» por el Covenant? Una flota Covenant ataca de repente la nave, dañándola seriamente. El capitán Jacob Keyes inicia entonces el «Protocolo Cole»,? un procedimiento diseñado para prevenir que el Covenant obtenga información sobre la ubicación de la Tierra. Mientras Keyes maniobra la nave para el aterrizaje en el planeta anillo, el Jefe Maestro y Cortana, junto a un grupo de marinos, huyen a través de una «cápsula de escape», la cual se estrella en la superficie del anillo; Cortana y el Jefe son los únicos que sobreviven al impacto de la cápsula.', 1);
+(34, 'Halo: Combat Evolved', 2001, 'El argumento del juego es relatado en el manual de instrucciones, y en los diálogos y narraciones de los personajes, así como algunas escenas. Halo inicia cuando el Pillar of Autumn sale del hiperespacio y llega a una misteriosa estación espacial en forma de anillo llamada «Halo» por el Covenant? Una flota Covenant ataca de repente la nave, dañándola seriamente. El capitán Jacob Keyes inicia entonces el «Protocolo Cole»,? un procedimiento diseñado para prevenir que el Covenant obtenga información sobre la ubicación de la Tierra. Mientras Keyes maniobra la nave para el aterrizaje en el planeta anillo, el Jefe Maestro y Cortana, junto a un grupo de marinos, huyen a través de una «cápsula de escape», la cual se estrella en la superficie del anillo; Cortana y el Jefe son los únicos que sobreviven al impacto de la cápsula.', 1),
+(35, 'Horizon Zero Dawn', 2017, 'La historia comienza con la crianza de Aloy, la protagonista del juego. Al nacer, las Matriarcas de la tribu encargaron su cuidado a manos de un marginado llamado Rost. Como resultado, Aloy también es una marginada, ya que nadie de la tribu puede tener contacto con ella o con Rost. En su niñez, Aloy exploraba las \"ruinas metálicas\"  y encontró un dispositivo electrónico llamado \"Foco\". Este objeto le permitió conocer detalles del mundo antiguo mientras exploraba las ruinas. Pero desde su infancia, Aloy ha sido despreciada y excluida por los demás por no tener una madre y quiere saber por qué. Rost le explica que la única manera en la que puede obtener respuestas, y ser aceptada por la tribu, es participar en el rito de los Nora llamado \"La Prueba\". Si gana, se convertirá en \"Valiente Nora\"? y las Matriarcas responderán a todas sus preguntas.', 1);
 
 -- --------------------------------------------------------
 
@@ -122,18 +123,6 @@ INSERT INTO `image` (`id_image`, `path`, `id_match`) VALUES
 (19, 'images/60d805b728417.jpg', 3),
 (20, 'images/60d805b741a5b.jpg', 3),
 (21, 'images/60d805b759930.jpg', 3),
-(22, 'images/60d805efed8f9.jpg', 3),
-(23, 'images/60d805f0032fb.jpg', 3),
-(24, 'images/60d805f00b7cc.jpg', 3),
-(25, 'images/60d806fc66e17.jpg', 3),
-(26, 'images/60d806fc71610.jpg', 3),
-(27, 'images/60d806fc7dd4b.jpg', 3),
-(28, 'images/60d8071f16a2a.jpg', 3),
-(29, 'images/60d8071f25874.jpg', 3),
-(30, 'images/60d8071f2f89e.jpg', 3),
-(31, 'images/60d8b0c69a5ce.jpg', 3),
-(32, 'images/60d8b0c6b6edb.jpg', 3),
-(33, 'images/60d8b0c6c39fe.jpg', 3),
 (35, 'images/60da96fa48424.jpg', 1),
 (36, 'images/60da96fa639a9.jpg', 1),
 (37, 'images/60ddddeadf858.jpg', 6),
@@ -216,7 +205,7 @@ ALTER TABLE `commentary`
 -- AUTO_INCREMENT de la tabla `game`
 --
 ALTER TABLE `game`
-  MODIFY `id_game` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_game` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `genero`
@@ -228,7 +217,7 @@ ALTER TABLE `genero`
 -- AUTO_INCREMENT de la tabla `image`
 --
 ALTER TABLE `image`
-  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT de la tabla `user`

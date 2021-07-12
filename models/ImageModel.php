@@ -21,17 +21,17 @@ class ImageModel extends Model
 
     public function upload($id_game)
     {
-
         $query = $this->getDb()->prepare('INSERT INTO image (path, id_match) values (?,?)');
-        $ext = $this->get_extension($_FILES['imagesToUpload']['type'][0]);
-        foreach ($_FILES["imagesToUpload"]["tmp_name"] as $key => $tmp_name) {
+        $cant = count($_FILES['imagesToUpload']['tmp_name']);
+        for ($i=0; $i < $cant;  $i++) { 
+            $ext = $this->get_extension($_FILES['imagesToUpload']['type'][$i]);
+            $tmp_name = $_FILES['imagesToUpload']['tmp_name'][$i];
             $destino_final = "images/" . uniqid() . "." . $ext;
             move_uploaded_file($tmp_name, $destino_final);
             $r = $query->execute([$destino_final, intval($id_game)]);
         }
         return $r;
     }
-
     public function get_extension($str)
     {
         return end(explode("/", $str));

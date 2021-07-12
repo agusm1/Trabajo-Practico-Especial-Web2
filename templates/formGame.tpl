@@ -5,7 +5,7 @@
         <h1>{$title}</h1>
         {include file="baroption.tpl"}
         <div class="col-md-9 central">
-            <form action="createGame" method="POST" enctype="multipart/form-data">
+            <form action="createGame" method="POST">
                 <div class="form-group">
                     <label>Ingrese el nombre del juego</label>
                     <input name="nombre" type="text" class="form-control" placeholder="Ingrese el nombre del juego" required>
@@ -24,9 +24,6 @@
                             <option value='{$genre->id_genre}'> {$genre->name}</option>
                         {/foreach}
                     </select>
-                </div>
-                <div class="form-group">
-                    <input type="file" name="imagesToUpload[]" id="imagesToUpload" multiple>
                 </div>
                 <button type="submit" class="btn btn-primary">Enviar </button>
             </form>

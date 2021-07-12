@@ -206,14 +206,30 @@ class InvitedController
     {
         AuthHelper::checkAdmin();
         $id_game = $_POST['game'];
+        foreach ($_FILES['imagesToUpload']['type'] as $key => $type) {
+            $extension = $this->imagemodel->get_extension($type);
+            if (!$this->validExtensions($extension)) {
+                $this->view->showError("Error ha ingresado un archivo no valido");    
+            }
+        }
         $images = $this->imagemodel->upload($id_game);
-        if ($images != false) {
+
+        if ($images) {
             header("Location: " . BASE_URL . 'home');
         } else {
             $this->view->showError("Error 500 Server Internal Error");
         }
     }
 
+    public function validExtensions($extension){
+
+        if($extension == 'png' || $extension == 'jpg' || $extension == 'jpeg' ){
+            return true;
+        } else{
+            return false;
+        }
+    }
+    
     public function searchResults()
     {
 

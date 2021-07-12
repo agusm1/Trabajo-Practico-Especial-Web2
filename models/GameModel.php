@@ -41,16 +41,7 @@ class GameModel extends Model
          */
         $query = $this->getDb()->prepare('INSERT INTO game  (`title`, `year`, `synopsis`, `id_genre`) VALUES (?, ?, ?, ?)');
         $result = $query->execute([$title, $year, $synopsis, $id_genre]);
-        if ($result) {
-            $id_game = $this->getDb()->lastInsertId();
-            $query_img = $this->getDb()->prepare('INSERT INTO image (path, id_match) values (?,?)');
-
-            foreach ($_FILES["imagesToUpload"]["tmp_name"] as $key => $tmp_name) {
-                $destino_final = "images/" . uniqid() . ".jpg";
-                move_uploaded_file($tmp_name, $destino_final);
-                $r = $query_img->execute([$destino_final, intval($id_game)]);
-            }
-        }
+        return $result;
     }
 
     public function delete($id_game)
