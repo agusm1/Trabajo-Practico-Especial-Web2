@@ -1,12 +1,14 @@
 {literal}
     <section id="Vue-images">
-        <ul class="list-none">
-            <li v-for="img in images">
-                <span v-if="admin == 1"> 
-                <button v-on:click="deleteImage( img.id_image )" class="btn btn-outline-light"><span aria-hidden="true">&times;</span></button>
-                </span>
-                <img style="width: 200px;" :src=" img.path ">
-            </li>
-        </ul>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div v-for="img in images" class="col">
+          <div class="card h-100">
+            <img :src="img.path" class="card-img-top" alt="...">
+              <span v-if="admin == 1"> 
+                <button v-on:click="deleteImage( img.id_image )" class="btn btn_close"><span aria-hidden="true">&times;</span></button>
+              </span>
+          </div>
+        </div>
+      </div>
     </section>
 {/literal}
