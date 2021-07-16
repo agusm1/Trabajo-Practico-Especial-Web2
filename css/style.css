@@ -22,8 +22,9 @@ footer {
 }
 
 .baroption {
-    background-color: #233a46;
-    height: 240px;
+    background-image: url("../img/baroption.png");
+    background-repeat: repeat;
+    background-size: cover;
 }
 
 .listbar {
@@ -56,8 +57,15 @@ footer {
     margin-top: 10px;
 }
 
+.fondo_li {
+    background-color: transparent !important;
+    border: none !important;
+}
+
 .central {
-    background-color: #2e7fa9 !important;
+    background-image: url("../img/fondo_list.png") !important;
+    background-repeat: repeat;
+    background-size: cover;
 }
 
 .list_detail {
@@ -229,8 +237,14 @@ footer {
 }
 
 .btn_close {
+    background-color: #fff;
+    color: #2e7fa9;
+    border-radius: 20px;
+}
+
+.color {
     background-color: #2e7fa9;
-    color: #ffff;
+    border: none;
 }
 
 .star_image {
