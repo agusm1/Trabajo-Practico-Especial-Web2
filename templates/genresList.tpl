@@ -3,10 +3,10 @@
     <div class="row align-items-start title">
         <h1>{$title}</h1>
         {include file="baroption.tpl"}
-        <div class="col-md-9">
+        <div class="col-md-9 central">
             <ul class="list-group">
                 {foreach from=$genres item=$genre}
-                    <li class="list-group-item central">
+                    <li class="list-group-item fondo_li">
                         <h4>{$genre->name} </h4>
                         <a class="btn btn-primary" href="gamesforgenero/{$genre->id_genre}">Ver juegos</a>
                         {if $admin == 1}
